@@ -12,4 +12,4 @@ Projekt pri predmetu OPB 2016/17
 * Namesti posycopg2
 * Namesti Django 
 
-*Poženi z ukazom python3 manage.py runserver
+* Poženi z ukazom python3 manage.py runserver

@@ -21,6 +21,8 @@ class Oseba(models.Model):
     telefon = models.IntegerField()
     mail = models.EmailField()
 
+    def __str__(self):
+        return self.ime +' '+ self.priimek
 
 
 class Druzina(models.Model):
