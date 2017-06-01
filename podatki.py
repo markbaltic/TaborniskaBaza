@@ -12,15 +12,20 @@ podatki = r.json()
 #preurejeno = {'osebe':[]}
 sez=[]
 js=podatki['results']
+st = 1
 for oseba in js:
     trenutni = dict()
-    trenutni['ime']=oseba['name']['first']
-    trenutni['priimek']=oseba['name']['last']
-    trenutni['naslov']=oseba['location']['street'] + ', ' + oseba['location']['postcode']
-    trenutni['rojstvo']=oseba['dob'][:10]
-    trenutni['telefon']=oseba['phone']
-    trenutni['email']=oseba['email']
+    trenutni['model'] = "taborniki.Oseba"
+    trenutni['pk']=st
+    trenutni['fields']=dict()
+    trenutni['fields']['ime']=oseba['name']['first']
+    trenutni['fields']['priimek']=oseba['name']['last']
+    trenutni['fields']['naslov']=oseba['location']['street'] + ', ' + oseba['location']['postcode']
+    trenutni['fields']['rojstvo']=oseba['dob'][:10]
+    trenutni['fields']['telefon']=oseba['phone']
+    trenutni['fields']['email']=oseba['email']
     sez.append(trenutni)
+    st += 1
 
 
     
