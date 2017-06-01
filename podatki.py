@@ -36,5 +36,7 @@ print(sez)
 with open('data.json', 'w') as f:
     json.dump(sez, f)
 
+# Vsi podatki morajo biti zapakirani na zgornji način. Shranimo jih v json file v mapi fixtures. Potem ji poženemo z
+#python3 manage.py loaddata imefila  --settings=TaborniskaBaza.settings_local
 
 

@@ -18,8 +18,8 @@ class Oseba(models.Model):
     priimek = models.CharField(max_length=50)
     naslov =models.CharField(max_length=100)
     rojstvo = models.DateField()
-    telefon = models.IntegerField()
-    mail = models.EmailField()
+    telefon = models.CharField(max_length=50)
+    email = models.EmailField()
 
     def __str__(self):
         return self.ime +' '+ self.priimek
