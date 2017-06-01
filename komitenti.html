@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>Komitenti</title>
+</head>
+<body>
+  <h2>Komitenti banke</h2>
+
+  <table cellpadding="0" cellspacing="0" border="1">
+  <tr>
+     <th>Id</th>
+     <th>Lastnik</th>
+     <th>Znamka</th>
+
+  </tr>
+  %for (id,lastnik,znamka,barva,nakup) in trak:
+    <tr>
+       <td>{{id}}</td>
+       <td>{{lastnik}}</td>
+       <td>{{znamka}}</td>
+
+    </tr>
+  %end
+  </table>
+
+  <p>
+    <a href="/transakcije/1000/">Transakcije</a>
+  </p>
+
+</body>
+</html>
