@@ -1,4 +1,0 @@
-<form method="get" action="/taborniki/">
-  Search Notecards:<input type="text" name="q" id="id_q" value="{{ query }}"/>
-  <input type="submit" value="Search" />
-</form>

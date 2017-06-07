@@ -18,22 +18,15 @@ def clani(request):
 def get_name(request):
     if request.method == 'POST':
         form = NameForm(request.POST)
+
+        # check whether it's valid:
         if form.is_valid():
-            clan = Oseba.objects.all().filter(ime = form)
-            return HttpResponse(clan)
+            data = form.cleaned_data
+            field = Oseba.objects.all().filter(ime = data['your_name'])
+            return HttpResponse(field)
+
+    # if a GET (or any other method) we'll create a blank form
     else:
         form = NameForm()
 
-    return render(request, 'clan.html', {'form': form})
-
-from django.template import RequestContext
-from django.shortcuts import render_to_response
-
-def search(request):
-    query = request.GET.get('id')
-    results = None
-
-    if query:
-        results = Oseba.objects.get(uid=query)
-    context = RequestContext(request)
-    return render_to_response('taborniki/results.html', {"results": results,}, context_instance=context)
+    return render(request, 'taborniki/name.html', {'form': form})
