@@ -273,7 +273,7 @@ class Router(object):
 
     def __init__(self, strict=False):
         self.rules    = [] # All rules in order
-        self._groups  = {} # index of regexes to find them in dyna_routes
+        self._groups  = {} # index.html of regexes to find them in dyna_routes
         self.builder  = {} # Data structure for the url builder
         self.static   = {} # Search structure for static routes
         self.dyna_routes   = {}
@@ -1846,7 +1846,7 @@ class MultiDict(DictMixin):
 
             :param default: The default value to be returned if the key is not
                    present or the type conversion fails.
-            :param index: An index for the list of available values.
+            :param index: An index.html for the list of available values.
             :param type: If defined, this callable is used to cast the value
                     into a specific type. Exception are suppressed and result in
                     the default value to be returned.
@@ -2277,7 +2277,7 @@ class ResourceManager(object):
             :param base: Path used to absolutize relative search paths.
                 Defaults to :attr:`base` which defaults to ``os.getcwd()``.
             :param index: Position within the list of search paths. Defaults
-                to last index (appends to the list).
+                to last index.html (appends to the list).
 
             The `base` parameter makes it easy to reference files installed
             along with a python module or package::
@@ -2549,7 +2549,7 @@ def parse_auth(header):
 
 def parse_range_header(header, maxlen=0):
     ''' Yield (start, end) ranges parsed from a HTTP Range header. Skip
-        unsatisfiable ranges. The end index is non-inclusive.'''
+        unsatisfiable ranges. The end index.html is non-inclusive.'''
     if not header or header[:6] != 'bytes=': return
     ranges = [r.split('-', 1) for r in header[6:].split(',') if '-' in r]
     for start, end in ranges:
