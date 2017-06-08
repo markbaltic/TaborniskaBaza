@@ -3,7 +3,7 @@ import requests
 import json
 
 ###prva vrjanta - anglezi -> ta ima več različnih imen :D
-r=requests.get('https://randomuser.me/api/?inc=name,loc,email,dob,phone,location,&nat=gb&results=2&noinfo&seed=tabor')
+r=requests.get('https://randomuser.me/api/?inc=name,loc,email,dob,phone,location,picture,&nat=gb&results=2&noinfo&seed=tabor')
 
 
 #druga varjana - slovenci
@@ -24,6 +24,7 @@ for oseba in js:
     trenutni['fields']['rojstvo']=oseba['dob'][:10]
     trenutni['fields']['telefon']=oseba['phone']
     trenutni['fields']['email']=oseba['email']
+    trenutni['fields']['slika'] = oseba['picture']['large']
     sez.append(trenutni)
     st += 1
 
