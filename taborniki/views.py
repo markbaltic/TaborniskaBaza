@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from taborniki.models import Oseba
 from django.db.models import Q
-from .forms import NameForm
+from .forms import NameForm, DodajClan
 
 def index(request):
     return render(request,'taborniki/index.html' )
@@ -34,3 +34,22 @@ def get_name(request):
         form = NameForm()
 
     return render(request, 'taborniki/name.html', {'form': form})
+
+def dodajClan(request):
+    if request.method == 'POST':
+        form = DodajClan(request.POST)
+
+        # check whether it's valid:
+        if form.is_valid():
+            data = form.cleaned_data
+            clan = Oseba.objects.create(ime = data['ime'],priimek=data['priimek'], naslov=data['naslov'],
+                                        telefon=data['telefon'] , email=data['email'] , rojstvo=data['rojstvo']  )
+            clan.save()
+            return render(request, 'taborniki/search_results.html', {'clan': clan})
+
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = DodajClan()
+
+    return render(request, 'taborniki/dodajClan.html', {'form': form})
