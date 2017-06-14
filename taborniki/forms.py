@@ -11,3 +11,4 @@ class DodajClan(forms.Form):
     rojstvo = forms.DateField()
     telefon = forms.CharField(max_length=50)
     email = forms.EmailField()
+    slika = forms.CharField(max_length=200)

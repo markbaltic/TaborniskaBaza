@@ -20,6 +20,7 @@ class Oseba(models.Model):
     rojstvo = models.DateField()
     telefon = models.CharField(max_length=50)
     email = models.EmailField()
+    slika = models.CharField(max_length=200)
 
     def __str__(self):
         return self.ime +' '+ self.priimek
