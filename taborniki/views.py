@@ -30,6 +30,9 @@ def index(request):
 def login(request):
     return render(request,'taborniki/login.html' )
 
+def profil(request):
+    return render(request,'taborniki/search_results.html')
+
 def clani(request):
     clani = Oseba.objects.all()
     output = ', '.join([p.__str__() for p in clani])
@@ -57,7 +60,9 @@ def get_name(request):
 def dodajClan(request):
     if request.method == 'POST':
         form = DodajClan(request.POST)
-
+        print(form)
+        print(form.cleaned_data)
+        print(form.is_valid())
         # check whether it's valid:
         if form.is_valid():
             data = form.cleaned_data

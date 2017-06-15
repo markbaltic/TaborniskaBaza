@@ -1,10 +1,8 @@
-{% comment %}
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit" />
-</form>{% endcomment %}
+{% extends "taborniki/index.html" %}
+
+
 {% load static %}
+
 
 <html>
 <head>
@@ -16,79 +14,48 @@
     <title>RKJ Baza</title>
 
 </head>
-<body>
-   <table>
-      <tr><td>Simple Text Field</td><td>Numeric Text Field</td><td>Disabled Text Field</td></tr>
-      <tr><td>
-         <form action="#">
-            <div class="mdl-textfield mdl-js-textfield">
-               <input class="mdl-textfield__input" type="text" id="text1">
-               <label class="mdl-textfield__label" for="text1">Text...</label>
-            </div>
-          </form>
-	  </td>
-      <td>
-         <form action="#">
-            <div class="mdl-textfield mdl-js-textfield">
-               <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="text2">
-               <label class="mdl-textfield__label" for="text2">Number...</label>
-			   <span class="mdl-textfield__error">Number required!</span>
-            </div>
-          </form>
-	  </td>
-      <td>
-         <form action="#">
-            <div class="mdl-textfield mdl-js-textfield">
-               <input class="mdl-textfield__input" type="text" id="text3" disabled>
-               <label class="mdl-textfield__label" for="text3">Disabled...</label>
-            </div>
-          </form>
-	   </td>
-      </tr>
-	  <tr><td>Simple Text Field with Floating Label</td><td>Numeric Text Field with Floating Label</td><td> </td></tr>
-      <tr><td>
-         <form action="#">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-               <input class="mdl-textfield__input" type="text" id="text4">
-               <label class="mdl-textfield__label" for="text4">Text...</label>
-            </div>
-          </form>
-	  </td>
-      <td>
-         <form action="#">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-               <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="text5">
-               <label class="mdl-textfield__label" for="text5">Number...</label>
-			   <span class="mdl-textfield__error">Number required!</span>
-            </div>
-          </form>
-	  </td>
-      <td> </td>
-      </tr>
-      <tr><td>Multiline Text Field</td><td>Expandable Multiline Text Field</td><td> </td></tr>
-      <tr><td>
-         <form action="#">
-            <div class="mdl-textfield mdl-js-textfield">
-               <textarea class="mdl-textfield__input" type="text" rows= "3" id="text7" ></textarea>
-               <label class="mdl-textfield__label" for="text7">Lines...</label>
-            </div>
-          </form>
-	  </td>
-      <td>
-         <form action="#">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-               <label class="mdl-button mdl-js-button mdl-button--icon" for="text8">
-                  <i class="material-icons">search</i>
-               </label>
-               <div class="mdl-textfield__expandable-holder">
-                  <input class="mdl-textfield__input" type="text" id="text8">
-                     <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
-               </div>
-            </div>
-          </form>
-	  </td>
-      <td> </td>
-      </tr>
-   </table>
-</body>
+
+
+
+{% block content %}
+    <form action="" method="post">{% csrf_token %}
+<div class="mdl-grid">
+  <div class="mdl-typography--headline mdl-cell mdl-cell--12-col">Dodaj člana</div>
+  <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+    <input class="mdl-textfield__input" type="text" id="firstname" name = 'ime' />
+    <label class="mdl-textfield__label" for="firstname">Ime</label>
+  </div>
+  <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+    <input class="mdl-textfield__input" type="text" id="firstname" name = 'priimek' />
+    <label class="mdl-textfield__label" for="lastname">Priimek</label>
+  </div>
+  <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+    <input class="mdl-textfield__input" type="text" id="address1" name = 'naslov'/>
+    <label class="mdl-textfield__label" for="address1">Naslov</label>
+  </div>
+  <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+    <input class="mdl-textfield__input" type="text" id="city" name = 'rojstvo'/>
+    <label class="mdl-textfield__label" for="city">Rojstni datum</label>
+  </div>
+  <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+    <input class="mdl-textfield__input" type="text" id="state" name = 'telefon' />
+    <label class="mdl-textfield__label" for="state">Telefon</label>
+  </div>
+  <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+    <input class="mdl-textfield__input" type="text" id="zip" name = 'email' />
+    <label class="mdl-textfield__label" for="zip">email</label>
+  </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+    <input class="mdl-textfield__input" type="text" id="zip" name = 'slika' />
+    <label class="mdl-textfield__label" for="zip">Slika</label>
+  </div>
+</div>
+
+<button id="placeOrder" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+  Dodaj
+</button>
+
+<div id="orderBusyIndicator" class="mdl-spinner mdl-js-spinner"></div>
+    </form>
+{% endblock %}
 </html>

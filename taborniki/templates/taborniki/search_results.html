@@ -138,7 +138,7 @@
 </style>
 
 </head>
-
+{% block content %}
 
 {% comment %}
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
@@ -185,7 +185,7 @@
 					<div class="innertube">
 						<h1>Profil osebe {{ clan.ime }} {{ clan.priimek }}</h1>
 
-						<p><img src={{ clan.slika }} ></p>
+
 					</div>
 				</div>
 			</main>
@@ -220,6 +220,7 @@
     <h2 class="mdl-card__title-text">{{ clan.ime }} {{ clan.priimek }}</h2>
   </div>
   <div class="mdl-card__supporting-text">
+      <p><img src={{ clan.slika }} ></p>
     <p>Jaz sem: {{ clan.ime }} {{ clan.priimek }}</p>
                         <p>Moj naslov: {{ clan.naslov }}</p>
                         <p>Rojen sem bil dne: {{ clan.rojstvo }}</p>
@@ -234,3 +235,5 @@
   </div>
 </div>
     </div>
+
+{% endblock  %}
