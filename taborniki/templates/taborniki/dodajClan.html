@@ -1,5 +1,94 @@
+{% comment %}
 <form action="" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit" />
-</form>
+</form>{% endcomment %}
+{% load static %}
+
+<html>
+<head>
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href = "{% static 'taborniki/css/material.min.css' %}">
+    <script src="{% static 'taborniki/js/material.min.js' %}"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>RKJ Baza</title>
+
+</head>
+<body>
+   <table>
+      <tr><td>Simple Text Field</td><td>Numeric Text Field</td><td>Disabled Text Field</td></tr>
+      <tr><td>
+         <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+               <input class="mdl-textfield__input" type="text" id="text1">
+               <label class="mdl-textfield__label" for="text1">Text...</label>
+            </div>
+          </form>
+	  </td>
+      <td>
+         <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+               <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="text2">
+               <label class="mdl-textfield__label" for="text2">Number...</label>
+			   <span class="mdl-textfield__error">Number required!</span>
+            </div>
+          </form>
+	  </td>
+      <td>
+         <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+               <input class="mdl-textfield__input" type="text" id="text3" disabled>
+               <label class="mdl-textfield__label" for="text3">Disabled...</label>
+            </div>
+          </form>
+	   </td>
+      </tr>
+	  <tr><td>Simple Text Field with Floating Label</td><td>Numeric Text Field with Floating Label</td><td> </td></tr>
+      <tr><td>
+         <form action="#">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+               <input class="mdl-textfield__input" type="text" id="text4">
+               <label class="mdl-textfield__label" for="text4">Text...</label>
+            </div>
+          </form>
+	  </td>
+      <td>
+         <form action="#">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+               <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="text5">
+               <label class="mdl-textfield__label" for="text5">Number...</label>
+			   <span class="mdl-textfield__error">Number required!</span>
+            </div>
+          </form>
+	  </td>
+      <td> </td>
+      </tr>
+      <tr><td>Multiline Text Field</td><td>Expandable Multiline Text Field</td><td> </td></tr>
+      <tr><td>
+         <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+               <textarea class="mdl-textfield__input" type="text" rows= "3" id="text7" ></textarea>
+               <label class="mdl-textfield__label" for="text7">Lines...</label>
+            </div>
+          </form>
+	  </td>
+      <td>
+         <form action="#">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+               <label class="mdl-button mdl-js-button mdl-button--icon" for="text8">
+                  <i class="material-icons">search</i>
+               </label>
+               <div class="mdl-textfield__expandable-holder">
+                  <input class="mdl-textfield__input" type="text" id="text8">
+                     <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+               </div>
+            </div>
+          </form>
+	  </td>
+      <td> </td>
+      </tr>
+   </table>
+</body>
+</html>

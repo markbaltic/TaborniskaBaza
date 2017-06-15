@@ -1,0 +1,2 @@
+{{ object.ime }}
+{{ object.priimek }}

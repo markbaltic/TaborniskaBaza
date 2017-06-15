@@ -1,0 +1,36 @@
+{% extends "taborniki/index.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iskanje</title>
+</head>
+
+
+{% block content %}
+<!-- Icon List -->
+<style>
+.demo-list-icon {
+  width: 300px;
+}
+</style>
+
+<ul class="demo-list-icon mdl-list">
+    {%  for clan in clani %}
+  <li class="mdl-list__item">
+    <span class="mdl-list__item-primary-content" >
+        <a href="profil"  >
+       <i class="material-icons mdl-list__item-icon">person</i>
+            </a>
+    {{ clan.ime }}  {{ clan.priimek }}
+
+</span>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
+</html>
+
+
+
+

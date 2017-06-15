@@ -12,3 +12,6 @@ class DodajClan(forms.Form):
     telefon = forms.CharField(max_length=50)
     email = forms.EmailField()
     slika = forms.CharField(max_length=200)
+
+class Search(forms.Form):
+    q = forms.CharField(label = "q", max_length=100, required=False)

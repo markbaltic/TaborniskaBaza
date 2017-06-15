@@ -1,4 +1,9 @@
-﻿ <!DOCTYPE html>
+﻿{% extends "taborniki/index.html" %}
+
+{% block title %}
+    Oseba
+{% endblock %}
+{% comment %}<!DOCTYPE html>
 <!-- Template by html.am -->
 <html>
 	<head>
@@ -65,7 +70,7 @@
 			You can remove this script and any reference to it.
 			 ============================= */
 			var bodyText=["Baza", "</p><p>", "" +
-            ""]
+            ""];
 			function generateText(sentenceCount){
 				for (var i=0; i<sentenceCount; i++)
 				document.write(bodyText[Math.floor(Math.random()*7)]+" ")
@@ -105,4 +110,127 @@
 
 		</div>
 	</body>
-</html>
+</html>{% endcomment %}
+
+
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% comment %}    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href = "{% static 'taborniki/css/material.min.css' %}">
+    <script src="{% static 'taborniki/js/material.min.js' %}"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>{{ clan.ime }} {{ clan.priimek }}</title>{% endcomment %}
+
+
+    <style>
+.demo-card-square.mdl-card {
+  width: 320px;
+  height: 320px;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url({{ clan.slika }}) bottom right 15% no-repeat #46B6AC;
+}
+</style>
+
+</head>
+
+
+{% comment %}
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon"
+               for="fixed-header-drawer-exp">
+          <i class="material-icons">search</i>
+        </label>
+
+            <div class="mdl-textfield__expandable-holder">
+                <form action=""  method="POST">{% csrf_token %}
+            <input class="mdl-textfield__input" type="text" name="q"
+                 id="fixed-header-drawer-exp">
+                    </form>
+            </div>
+
+      </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Title</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content"><!-- Your content goes here --></div>
+  </main>
+</div>{% endcomment %}
+
+<body>
+		{% comment %}<div id="wrapper">
+
+			<main>
+				<div id="content">
+					<div class="innertube">
+						<h1>Profil osebe {{ clan.ime }} {{ clan.priimek }}</h1>
+
+						<p><img src={{ clan.slika }} ></p>
+					</div>
+				</div>
+			</main>
+
+			<nav id="nav">
+				<div class="innertube">
+					<h3>Osebni podatki</h3>
+					<ul>
+                        <p>Jaz sem: {{ clan.ime }} {{ clan.priimek }}</p>
+                        <p>Moj naslov: {{ clan.naslov }}</p>
+                        <p>Rojen sem bil dne: {{ clan.rojstvo }}</p>
+                        <p>Pokličeš me lahko na: {{ clan.telefon }}</p>
+                        <p>Pišeš mi lahko na: {{ clan.email }}</p>
+                        <p>Moj vod: <a href="#">Lisjaki</a></p>
+						<p>Moj rod: <a href="#">Rod Veseli Svizec</a></p>
+					</ul>
+
+				</div>
+			</nav>
+
+		</div>{% endcomment %}
+
+
+	</body>
+
+ <div>
+<!-- Square card -->
+
+
+<div class="demo-card-square mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title mdl-card--expand">
+    <h2 class="mdl-card__title-text">{{ clan.ime }} {{ clan.priimek }}</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    <p>Jaz sem: {{ clan.ime }} {{ clan.priimek }}</p>
+                        <p>Moj naslov: {{ clan.naslov }}</p>
+                        <p>Rojen sem bil dne: {{ clan.rojstvo }}</p>
+                        <p>Pokličeš me lahko na: {{ clan.telefon }}</p>
+                        <p>Pišeš mi lahko na: {{ clan.email }}</p>
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+      <p>Moj vod: <a href="#">Lisjaki</a></p>
+
+    </a>
+  </div>
+</div>
+    </div>

@@ -1,15 +1,34 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from itertools import chain
 
 from django.shortcuts import render
-
+import django.contrib.postgres.search as search
 from django.http import HttpResponse
 from taborniki.models import Oseba
 from django.db.models import Q
-from .forms import NameForm, DodajClan
+from .forms import NameForm, DodajClan, Search
 
 def index(request):
-    return render(request,'taborniki/index.html' )
+    if request.method == 'POST':
+        form = Search(request.POST)
+        print('forma')
+        print(form)
+
+        if form.is_valid():
+            data = form.cleaned_data['q']
+            #poiščemo po imenu
+            clani1 = Oseba.objects.filter(ime__contains = data)
+            #poiščemo po priimku
+            clani2 = Oseba.objects.filter(priimek__contains = data)
+            #združimo in odstranimo duplikate
+            clani = list(set(list(chain(clani1,clani2))))
+            return render(request, 'taborniki/tabele.html', {'clani' : clani})
+    form = Search()
+    return render(request,'taborniki/base.html',  {'form': form} )
+
+def login(request):
+    return render(request,'taborniki/login.html' )
 
 def clani(request):
     clani = Oseba.objects.all()
@@ -18,7 +37,7 @@ def clani(request):
 
 def get_name(request):
     if request.method == 'POST':
-        form = NameForm(request.POST)
+        form = request.POST.get('q')
 
         # check whether it's valid:
         if form.is_valid():
