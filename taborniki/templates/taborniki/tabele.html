@@ -1,4 +1,4 @@
-{% extends "taborniki/index.html" %}
+{% extends "taborniki/base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +19,7 @@
     {%  for clan in clani %}
   <li class="mdl-list__item">
     <span class="mdl-list__item-primary-content" >
-        <a href= ""  >
+        <a href= "{% url 'profil' clan.id %}"  >
        <i class="material-icons mdl-list__item-icon">person</i>
             </a>
     {{ clan.ime }}  {{ clan.priimek }}

@@ -27,7 +27,7 @@
         </label>
 
             <div class="mdl-textfield__expandable-holder">
-                <form action=""  method="POST">{% csrf_token %}
+                <form action=""  method="GET">
             <input class="mdl-textfield__input" type="text" name="q"
                  id="fixed-header-drawer-exp">
                     </form>
@@ -35,7 +35,7 @@
 
       </div>
         <div>
-            <a href="dodajClan.html">
+            <a href="{% url 'dodaj' %}">
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
             <i class="material-icons">add</i>
             </button>

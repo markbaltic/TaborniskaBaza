@@ -26,11 +26,7 @@ class Oseba(models.Model):
         return self.ime +' '+ self.priimek
 
 
-class Druzina(models.Model):
-    imeDruzina = models.CharField(max_length=50)
-    druzina = models.ForeignKey(Oseba,
-                                on_delete=models.CASCADE,
-                                related_name='druzina_clan')
+
 
 class Rod(models.Model):
     imeRod = models.CharField(max_length=50)

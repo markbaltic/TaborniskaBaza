@@ -9,3 +9,4 @@ __pycache__
 .Rhistory
 .Rproj.user
 settings_local.py
+.idea
