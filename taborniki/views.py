@@ -15,7 +15,7 @@ def search_results(request):
     if form.is_valid():
         isci = form.cleaned_data['q']
     else:
-        redirect('/taborniki/index' % data)
+        redirect('/taborniki/index')
     # poiščemo po imenu
     clani1 = Oseba.objects.filter(ime__contains=isci)
     # poiščemo po priimku
