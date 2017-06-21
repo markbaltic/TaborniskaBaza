@@ -7,8 +7,8 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 
-    url(r'^index', views.index, name='base.html'),
-    url(r'^search/(?P<isci>\w+?)$', views.search_results, name='iskanje'),
+    url(r'^index', views.index, name='index'),
+    url(r'^search', views.search_results, name='search'),
     url(r'^clani', views.clani, name='clani'),
     url(r'^profil/(?P<clan_id>[0-9]+)$', views.get_name , name='profil'),
     url(r'^dodaj', views.dodajClan , name='dodaj'),

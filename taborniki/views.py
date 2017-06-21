@@ -10,7 +10,12 @@ from django.db.models import Q
 from .forms import NameForm, DodajClan, Search
 
 
-def search_results(request, isci):
+def search_results(request):
+    form = Search(request.GET)
+    if form.is_valid():
+        isci = form.cleaned_data['q']
+    else:
+        redirect('/taborniki/index' % data)
     # poiščemo po imenu
     clani1 = Oseba.objects.filter(ime__contains=isci)
     # poiščemo po priimku
@@ -21,11 +26,6 @@ def search_results(request, isci):
 
 
 def index(request):
-    if request.method == 'GET':
-        form = Search(request.GET)
-        if form.is_valid():
-            data = form.cleaned_data['q']
-            return redirect('/taborniki/search/%s' % data)
     form = Search()
     return render(request,'taborniki/base.html',  {'form': form} )
 
