@@ -8,27 +8,55 @@
 
 
 {% block content %}
-<!-- Icon List -->
-<style>
-.demo-list-icon {
-  width: 300px;
-}
-</style>
+    <!-- Icon List -->
+    <style>
+        .demo-list-icon {
+            width: 300px;
+        }
+    </style>
 
-<ul class="demo-list-icon mdl-list">
-    {%  for clan in clani %}
-  <li class="mdl-list__item">
-    <span class="mdl-list__item-primary-content" >
-        <a href= "{% url 'profil' clan.id %}"  >
+    <ul class="demo-list-icon mdl-list">
+
+        {% for clan in clani %}
+            <li class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+        <a href="{% url 'profil' clan.id %}">
        <i class="material-icons mdl-list__item-icon">person</i>
             </a>
     {{ clan.ime }}  {{ clan.priimek }}
 
 </span>
-  </li>
-  {% endfor %}
-</ul>
+            </li>
+        {% endfor %}
+    </ul>
+    <ul class="demo-list-icon mdl-list">
 
+        {% for vod in vodi %}
+            <li class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+        <a href="{% url 'profil' vod.id %}">
+       <i class="material-icons mdl-list__item-icon">pocket</i>
+            </a>
+    {{ vod.imeVod }}
+
+</span>
+            </li>
+        {% endfor %}
+    </ul>
+<ul class="demo-list-icon mdl-list">
+
+        {% for akcija  in akcije %}
+            <li class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+        <a href="{% url 'Akcija' akcije.id %}">
+       <i class="material-icons mdl-list__item-icon">file</i>
+            </a>
+    {{ akcija.imeAkcija }}
+
+</span>
+            </li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}
 </html>
