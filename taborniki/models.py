@@ -19,7 +19,7 @@ class Vod(models.Model):
                                   on_delete=models.CASCADE,
                                   related_name='+',
                                   null=True)
-    rod = models.OneToOneField("Rod",
+    rod = models.ForeignKey("Rod",
                                on_delete=models.CASCADE,
                                related_name='+',
                                null=True)
