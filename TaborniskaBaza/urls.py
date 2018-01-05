@@ -13,11 +13,36 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
-from django.contrib import admin
+# from django.conf.urls import url, include
+# from django.contrib import admin
+# from django.contrib.auth import views as auth_views
+#
+#
+# admin.autodiscover()
+# urlpatterns = [
+#     url(r'^admin/', include(admin.site.urls)),
+#     url(r'^taborniki/', include('taborniki.urls')),
+#     url(r'^$', auth_views.login, {'template_name': 'taborniki/login.html'}, name='login'),
+#
+# ]
 
-admin.autodiscover()
+from django.conf.urls import url
+
+from taborniki import views
+
+from django.contrib import admin
+from django.contrib.auth import views as auth_views
+
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^taborniki/', include('taborniki.urls')),
+
+    url(r'^taborniki/index', views.index, name='index'),
+    url(r'^taborniki/search', views.search_results, name='search'),
+    url(r'^taborniki/clani', views.clani, name='clani'),
+    url(r'^taborniki/profil/(?P<clan_id>[0-9]+)$', views.get_name , name='profil'),
+    url(r'^taborniki/dodaj', views.dodajClan , name='dodaj'),
+
+    url(r'^$', auth_views.login, {'template_name': 'taborniki/login.html'} , name='login'),
+    url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^admin/', admin.site.urls)
+
 ]

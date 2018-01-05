@@ -5,7 +5,7 @@ from itertools import chain
 from django.shortcuts import render, redirect
 import django.contrib.postgres.search as search
 from django.http import HttpResponse
-from taborniki.models import Oseba
+from taborniki.models import Oseba, Vod
 from django.db.models import Q
 from .forms import NameForm, DodajClan, Search
 
@@ -22,6 +22,7 @@ def search_results(request):
     clani2 = Oseba.objects.filter(priimek__contains=isci)
     # združimo in odstranimo duplikate
     clani = list(set(list(chain(clani1, clani2))))
+    vodi = Vod.objects.filter(imeVod = isci)
     return render(request, 'taborniki/tabele.html', {'clani':clani})
 
 
