@@ -8,27 +8,62 @@
 
 
 {% block content %}
-<!-- Icon List -->
-<style>
-.demo-list-icon {
-  width: 300px;
-}
-</style>
+<!--&lt;!&ndash; Icon List &ndash;&gt;-->
+<!--<style>-->
+<!--.demo-list-icon {-->
+  <!--width: 300px;-->
+<!--}-->
 
-<ul class="demo-list-icon mdl-list">
-    {%  for clan in clani %}
-  <li class="mdl-list__item">
-    <span class="mdl-list__item-primary-content" >
-        <a href= "{% url 'profil' clan.id %}"  >
-       <i class="material-icons mdl-list__item-icon">person</i>
-            </a>
-    {{ clan.ime }}  {{ clan.priimek }}
 
-</span>
-  </li>
-  {% endfor %}
-</ul>
 
+<!--</style>-->
+
+<!--<div class="table">-->
+    <!--<div class="left">-->
+        <!--<ul class="demo-list-icon mdl-list">-->
+            <!--{% for clan in clani %}-->
+            <!--<li class="mdl-list__item">-->
+    <!--<span class="mdl-list__item-primary-content">-->
+        <!--<a href="{% url 'profil' clan.id %}">-->
+       <!--<i class="material-icons mdl-list__item-icon">person</i>-->
+            <!--</a>-->
+    <!--{{ clan.ime }}  {{ clan.priimek }}-->
+
+<!--</span>-->
+            <!--</li>-->
+            <!--{% endfor %}-->
+        <!--</ul>-->
+    <!--</div>-->
+
+
+    <!--<div class="right">-->
+        <!--Content of the second column.-->
+    <!--</div>-->
+
+
+<!--</div>-->
+
+<h2>With Table</h2>
+<table>
+   <tr>
+      <td>
+         Content of the first column.
+      </td>
+      <td>
+         Content of the second column.
+      </td>
+   </tr>
+</table>
+
+<h2>With Div</h2>
+<div class="table">
+    <div class="left">
+        Content of the first column.
+    </div>
+    <div class="right">
+       Content of the second column.
+    </div>
+</div>
 
 {% endblock %}
 </html>
