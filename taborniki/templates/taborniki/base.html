@@ -34,9 +34,9 @@
 
             </div>
             <div>
-                <a href="{% url 'dodaj' %}">
+                <a href="{% url 'index' %}">
                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-                        <i class="material-icons">add</i>
+                        <i class="material-icons">domain</i>
                     </button>
                 </a>
             </div>
@@ -48,6 +48,16 @@
             <a class="mdl-navigation__link" href="">Moj vod</a>
             <a class="mdl-navigation__link" href="">Moje akcije</a>
             <a class="mdl-navigation__link" href="">Moja mama</a>
+            <a href="{% url 'index' %}">
+                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+                        <i class="material-icons">domain</i>
+                    </button>
+                </a>
+            <a href="{% url 'dodaj' %}">
+                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+                        <i class="material-icons">add</i>
+                    </button>
+                </a>
         </nav>
     </div>
 

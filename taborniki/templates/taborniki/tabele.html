@@ -21,7 +21,7 @@
             <li class="mdl-list__item">
     <span class="mdl-list__item-primary-content">
         <a href="{% url 'profil' clan.id %}">
-       <i class="material-icons mdl-list__item-icon">person</i>
+       <i class="material-icons mdl-list__item-icon">face</i>
             </a>
     {{ clan.ime }}  {{ clan.priimek }}
 
@@ -35,7 +35,7 @@
             <li class="mdl-list__item">
     <span class="mdl-list__item-primary-content">
         <a href="{% url 'vod' vod.id %}">
-       <i class="material-icons mdl-list__item-icon">pocket</i>
+       <i class="material-icons mdl-list__item-icon">hdr_weak</i>
             </a>
     {{ vod.imeVod }}
 
@@ -43,7 +43,7 @@
             </li>
         {% endfor %}
     </ul>
-<ul class="demo-list-icon mdl-list">
+    <ul class="demo-list-icon mdl-list">
 
         {% for akcija  in akcije %}
             <li class="mdl-list__item">
@@ -64,7 +64,7 @@
             <li class="mdl-list__item">
     <span class="mdl-list__item-primary-content">
         <a href="{% url 'rod' rod.id %}">
-       <i class="material-icons mdl-list__item-icon">file</i>
+       <i class="material-icons mdl-list__item-icon">hdr_strong</i>
             </a>
     {{ rod.imeRod }}
 
