@@ -34,7 +34,7 @@
         {% for vod in vodi %}
             <li class="mdl-list__item">
     <span class="mdl-list__item-primary-content">
-        <a href="{% url 'profil' vod.id %}">
+        <a href="{% url 'vod' vod.id %}">
        <i class="material-icons mdl-list__item-icon">pocket</i>
             </a>
     {{ vod.imeVod }}
@@ -52,6 +52,21 @@
        <i class="material-icons mdl-list__item-icon">file</i>
             </a>
     {{ akcija.imeAkcija }}
+
+</span>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <ul class="demo-list-icon mdl-list">
+
+        {% for rod  in rodi %}
+            <li class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+        <a href="{% url 'rod' rod.id %}">
+       <i class="material-icons mdl-list__item-icon">file</i>
+            </a>
+    {{ rod.imeRod }}
 
 </span>
             </li>

@@ -5,7 +5,7 @@ from itertools import chain
 from django.shortcuts import render, redirect
 import django.contrib.postgres.search as search
 from django.http import HttpResponse
-from taborniki.models import Oseba, Vod
+from taborniki.models import Oseba, Vod, Rod
 from django.db.models import Q
 from .forms import NameForm, DodajClan, Search
 
@@ -22,8 +22,10 @@ def search_results(request):
         clani = list(set(list(chain(clani1, clani2))))
         # najdemo vode
         vodi = list(Vod.objects.filter(imeVod__contains = isci))
-        if clani:
-            return render(request, 'taborniki/tabele.html', {'clani': clani, 'vodi':vodi})
+        #najdemo rode
+        rodi = list(Rod.objects.filter(imeRod__contains=isci))
+        if clani or vodi or rodi:
+            return render(request, 'taborniki/tabele.html', {'clani': clani, 'vodi':vodi, 'rodi' : rodi})
         else:
             return render(request, 'taborniki/no_results.html', {'isci': isci})
     else:
@@ -56,14 +58,15 @@ def get_name(request, clan_id):
 
 def get_vod(request, vod_id):
     vod = Vod.objects.get(id = vod_id)
+
     return render(request, 'taborniki/vod.html', {'Vod': vod})
 
+def get_rod(request, rod_id):
+    rod = Rod.objects.get(id = rod_id)
+    return render(request, 'taborniki/rod.html', {'Rod': rod})
 def dodajClan(request):
     if request.method == 'POST':
         form = DodajClan(request.POST)
-        print(form)
-        print(form.cleaned_data)
-        print(form.is_valid())
         # check whether it's valid:
         if form.is_valid():
             data = form.cleaned_data

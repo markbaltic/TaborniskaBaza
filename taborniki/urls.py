@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^dodaj', views.dodajClan , name='dodaj'),
     url(r'^vod/(?P<vod_id>[0-9]+)$', views.get_vod , name='vod'),
     url(r'^[a-zA-Z]', views.index, name='index'),
-
+    url(r'^rod/(?P<rod_id>[0-9]+)$', views.get_rod , name='rod'),
     url(r'^', auth_views.login, {'template_name': 'taborniki/login.html'} , name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^admin/', admin.site.urls),

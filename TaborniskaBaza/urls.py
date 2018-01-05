@@ -40,6 +40,8 @@ urlpatterns = [
     url(r'^taborniki/clani', views.clani, name='clani'),
     url(r'^taborniki/profil/(?P<clan_id>[0-9]+)$', views.get_name , name='profil'),
     url(r'^taborniki/dodaj', views.dodajClan , name='dodaj'),
+    url(r'^taborniki/vod/(?P<vod_id>[0-9]+)$', views.get_vod , name='vod'),
+    url(r'^taborniki/rod/(?P<rod_id>[0-9]+)$', views.get_rod , name='rod'),
 
     url(r'^$', auth_views.login, {'template_name': 'taborniki/login.html'} , name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
