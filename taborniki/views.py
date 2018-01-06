@@ -10,6 +10,7 @@ from django.db.models import Q
 from .forms import NameForm, DodajClan, Search
 
 
+
 def search_results(request):
     form = Search(request.GET)
     if form.is_valid():
@@ -35,11 +36,10 @@ def search_results(request):
 
 
 
-
-
 def index(request):
     form = Search()
-    return render(request,'taborniki/base.html',  {'form': form} )
+    clan = Oseba.objects.get(id = 6)
+    return render(request,'taborniki/home.html',  {'form': form, 'ime':clan.ime, 'priimek':clan.priimek} )
 
 def login(request):
     return render(request,'taborniki/login.html' )
@@ -58,12 +58,14 @@ def get_name(request, clan_id):
 
 def get_vod(request, vod_id):
     vod = Vod.objects.get(id = vod_id)
+    vsiclani = vod.vod_clan.all()
 
-    return render(request, 'taborniki/vod.html', {'vod': vod})
+    return render(request, 'taborniki/vod.html', {'vod': vod, 'clani':vsiclani})
 
 def get_rod(request, rod_id):
     rod = Rod.objects.get(id = rod_id)
-    return render(request, 'taborniki/rod.html', {'rod': rod})
+    vodi = rod.rodov_vod.all()
+    return render(request, 'taborniki/rod.html', {'rod': rod, 'vodi':vodi})
 def dodajClan(request):
     if request.method == 'POST':
         print('nekej')

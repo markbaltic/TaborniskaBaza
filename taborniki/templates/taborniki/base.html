@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=2">
     <link rel="stylesheet" href="{% static 'taborniki/css/material.min.css' %}">
     <script src="{% static 'taborniki/js/material.min.js' %}"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -11,28 +11,44 @@
 </head>
 
 
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+<div class="mdl-layout mdl-js-layout
             mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-
+    <header class="mdl-layout__header ">
+        <!-- Left aligned menu below button -->
         <div class="mdl-layout__header-row">
+
+
+                <button id="demo-menu-lower-left"
+                        class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">more_vert</i>
+                </button>
+
+                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                    for="demo-menu-lower-left">
+                    <li class="mdl-menu__item"><a href="{% url 'dodaj' %}">Dodaj člana</a></li>
+                    <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Another Action</li>
+                    <li disabled class="mdl-menu__item">Disabled Action</li>
+                    <li class="mdl-menu__item">Yet Another Action</li>
+                </ul>
+
+
             <div class="mdl-layout-spacer"></div>
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                   mdl-textfield--floating-label mdl-textfield--align-right">
-                <label class="mdl-button mdl-js-button mdl-button--icon"
-                       for="fixed-header-drawer-exp">
-                    <i class="material-icons">search</i>
-                </label>
+                    <label class="mdl-button mdl-js-button mdl-button--icon"
+                           for="fixed-header-drawer-exp">
+                        <i class="material-icons">search</i>
+                    </label>
 
-                <div class="mdl-textfield__expandable-holder">
-                    <form action="{% url 'search' %}" method="GET">
-                        <input class="mdl-textfield__input" type="text" name="q"
-                               id="fixed-header-drawer-exp">
-                    </form>
+                    <div class="mdl-textfield__expandable-holder">
+                        <form action="{% url 'search' %}" method="GET">
+                            <input class="mdl-textfield__input" type="text" name="q"
+                                   id="fixed-header-drawer-exp">
+                        </form>
+                    </div>
+
                 </div>
-
-            </div>
             <div>
                 <a href="{% url 'index' %}">
                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
@@ -40,26 +56,11 @@
                     </button>
                 </a>
             </div>
+
         </div>
     </header>
-    <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Upisan z geslom</span>
-        <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="">Moj vod</a>
-            <a class="mdl-navigation__link" href="">Moje akcije</a>
-            <a class="mdl-navigation__link" href="">Moja mama</a>
-            <a href="{% url 'index' %}">
-                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-                        <i class="material-icons">domain</i>
-                    </button>
-                </a>
-            <a href="{% url 'dodaj' %}">
-                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-                        <i class="material-icons">add</i>
-                    </button>
-                </a>
-        </nav>
-    </div>
+
+
 
     {% block content %}
     {% endblock %}

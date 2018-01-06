@@ -21,7 +21,7 @@ class Vod(models.Model):
                                   null=True)
     rod = models.ForeignKey("Rod",
                                on_delete=models.CASCADE,
-                               related_name='+',
+                               related_name='rodov_vod',
                                null=True)
 
 class Oseba(models.Model):
@@ -36,7 +36,8 @@ class Oseba(models.Model):
     vod = models.ForeignKey("Vod",
                             on_delete=models.CASCADE,
                             related_name='vod_clan',
-                            null=True),
+                            null=True)
+
 
     def __str__(self):
         return self.ime + ' ' + self.priimek

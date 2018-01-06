@@ -37,6 +37,7 @@ urlpatterns = [
 
     url(r'^taborniki/index', views.index, name='index'),
     url(r'^taborniki/search', views.search_results, name='search'),
+
     url(r'^taborniki/clani', views.clani, name='clani'),
     url(r'^taborniki/profil/(?P<clan_id>[0-9]+)$', views.get_name , name='profil'),
     url(r'^taborniki/dodaj', views.dodajClan , name='dodaj'),

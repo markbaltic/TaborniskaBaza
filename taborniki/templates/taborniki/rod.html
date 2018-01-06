@@ -45,7 +45,19 @@
 
                 <p>Rod: {{ rod.imeRod }} </p>
 
-                <p>Člani so:</p>
+                <p>Vodi so:</p>
+                <ul class="demo-list-icon mdl-list">
+                    {% for vod in vodi %}
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                <a href="{% url 'vod' vod.id %}">
+                                    <i class="material-icons mdl-list__item-icon">face</i>
+                                </a>
+                                {{ vod.imeVod }}
+                            </span>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
