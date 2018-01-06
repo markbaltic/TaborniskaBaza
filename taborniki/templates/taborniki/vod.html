@@ -20,7 +20,6 @@
         .demo-card-square > .mdl-card__title {
             color: #fff;
 
-
         }
     </style>
 
@@ -47,8 +46,14 @@
                 <p>Vod: {{ vod.imeVod }} </p>
                 <p>Vodnik: {{ vod.vodnik }}</p>
                 <p>Rod: {{ vod.rod.imeRod }}</p>
-                <p>Člani so:</p>
+                <p>Člani so:
+
+                </p>
             </div>
+
+            {#            Dodaj clan v vod#}
+            <button id="show-dialog" type="button" class="mdl-button">Dodaj člana</button>
+            
         </div>
     </div>
 

@@ -66,9 +66,14 @@ def get_rod(request, rod_id):
     return render(request, 'taborniki/rod.html', {'rod': rod})
 def dodajClan(request):
     if request.method == 'POST':
+        print('nekej')
         form = DodajClan(request.POST)
+        print(request)
+        print(form)
+        print(form.is_valid())
         # check whether it's valid:
         if form.is_valid():
+            print('valid form')
             data = form.cleaned_data
             clan = Oseba.objects.create(ime = data['ime'],priimek=data['priimek'], naslov=data['naslov'],
                                         telefon=data['telefon'] , email=data['email'] , rojstvo=data['rojstvo']  )
@@ -82,3 +87,9 @@ def dodajClan(request):
         form = DodajClan()
 
     return render(request, 'taborniki/dodajClan.html', {'form': form})
+
+
+def odstrani_clan(request, clan_id):
+    clan = Oseba.objects.get(id=clan_id)
+    clan.delete()
+    return redirect('/taborniki/index')

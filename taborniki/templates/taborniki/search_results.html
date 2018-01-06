@@ -55,6 +55,38 @@
 
                 </a>
             </div>
+
+
+            <button id="show-dialog" type="button" class="mdl-button">Odstrani</button>
+
+            <dialog class="mdl-dialog">
+                <h4 class="mdl-dialog__title">Odstranim {{ clan.ime }} {{ clan.priimek }}?</h4>
+                <div class="mdl-dialog__content">
+                    <p>
+                        Sigurno??
+                    </p>
+                </div>
+
+                <div class="mdl-dialog__actions">
+                    <button type="button" class="mdl-button close">Ne</button>
+                    <button type="button" class="mdl-button "><a
+                            href="{% url 'odstraniClan' clan.id %}">Ja</a></button>
+                </div>
+            </dialog>
+            <script>
+                var dialog = document.querySelector('dialog');
+                var showDialogButton = document.querySelector('#show-dialog');
+                if (!dialog.showModal) {
+                    dialogPolyfill.registerDialog(dialog);
+                }
+                showDialogButton.addEventListener('click', function () {
+                    dialog.showModal().href();
+                });
+                dialog.querySelector('.close').addEventListener('click', function () {
+                    dialog.close();
+                });
+            </script>
+
         </div>
     </div>
 

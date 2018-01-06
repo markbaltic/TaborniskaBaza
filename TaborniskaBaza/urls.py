@@ -42,6 +42,7 @@ urlpatterns = [
     url(r'^taborniki/dodaj', views.dodajClan , name='dodaj'),
     url(r'^taborniki/vod/(?P<vod_id>[0-9]+)$', views.get_vod , name='vod'),
     url(r'^taborniki/rod/(?P<rod_id>[0-9]+)$', views.get_rod , name='rod'),
+    url(r'^taborniki/profil/odstrani/(?P<clan_id>[0-9]+)$', views.odstrani_clan , name='odstraniClan'),
 
     url(r'^$', auth_views.login, {'template_name': 'taborniki/login.html'} , name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),

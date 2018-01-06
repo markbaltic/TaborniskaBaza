@@ -36,7 +36,7 @@ class Oseba(models.Model):
     vod = models.ForeignKey("Vod",
                             on_delete=models.CASCADE,
                             related_name='vod_clan',
-                            null=True)
+                            null=True),
 
     def __str__(self):
         return self.ime + ' ' + self.priimek
