@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 import django.contrib.postgres.search as search
 from django.http import HttpResponse
 from taborniki.models import Oseba, Vod, Rod
-from django.db.models import Q
+from django.db.models import Q, Count
 from .forms import NameForm, DodajClan, Search
 
 
@@ -39,7 +39,19 @@ def search_results(request):
 def index(request):
     form = Search()
     clan = Oseba.objects.get(id = 6)
-    return render(request,'taborniki/home.html',  {'form': form, 'ime':clan.ime, 'priimek':clan.priimek} )
+
+    rkjVodi = Vod.objects.all().filter(rod=1000).__len__()
+    rorVodi = Vod.objects.all().filter(rod=1001).__len__()
+    rcbVodi = Vod.objects.all().filter(rod=1002).__len__()
+    rkjClani = Oseba.objects.all().filter(vod__rod = 1000).__len__()
+    rorClani = Oseba.objects.all().filter(vod__rod=1001).__len__()
+    rcbClani = Oseba.objects.all().filter(vod__rod=1002).__len__()
+ 
+    return render(request,'taborniki/home.html',  {'form': form, 'ime':clan.ime, 'priimek':clan.priimek, 'rkjVodi':rkjVodi,
+                                                   'rorVodi':rorVodi, 'rcbVodi':rcbVodi,
+                                                   'rkjClani': rkjClani,
+                                                   'rorClani': rorClani, 'rcbClani': rcbClani
+                                                   } )
 
 def login(request):
     return render(request,'taborniki/login.html' )
