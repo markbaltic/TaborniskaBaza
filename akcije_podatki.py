@@ -6,9 +6,24 @@ def make_dates():
     year = random.randint(2000,2017)
     month = random.randint(1, 12)
     day = random.randint(1, 28)
-    start = str(year)+'-'+ str(month)+'-'+str(day)
-    end = str(year)+'-'+ str(month)+'-'+str(day+1)
+    if day < 10:
+        if month < 10:
+            start = str(year) + '-0' + str(month) + '-0' + str(day)
+            end = str(year) + '-0' + str(month) + '-0' + str(day + 1)
+        else:
+            start = str(year) + '-' + str(month) + '-0' + str(day)
+            end = str(year) + '-' + str(month) + '-0' + str(day + 1)
+
+    else:
+        if month < 10:
+            start = str(year) + '-0' + str(month) + '-' + str(day)
+            end = str(year) + '-0' + str(month) + '-' + str(day + 1)
+        else:
+            start = str(year) + '-' + str(month) + '-' + str(day)
+            end = str(year) + '-' + str(month) + '-' + str(day + 1)
     return(start,end)
+
+
 
 datum1 = make_dates()
 a1 = {"imeAkcija" : "Izlet v Ljubljano",
@@ -16,7 +31,8 @@ a1 = {"imeAkcija" : "Izlet v Ljubljano",
                  " Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu",
     "zacetek" : datum1[0],
     "konec" : datum1[1],
-      "organizator" : 101}
+      "organizator" : 101,
+      "udelezenci": random.sample(range(1, 150), random.randint(10,50))}
 
 datum2 = make_dates()
 a2 = {"imeAkcija" : "Izlet v Maribor",
@@ -24,7 +40,8 @@ a2 = {"imeAkcija" : "Izlet v Maribor",
                  " rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.",
     "zacetek" : datum2[0],
     "konec" : datum2[1],
-      "organizator" : 102}
+      "organizator" : 102,
+      "udelezenci": random.sample(range(1, 150), random.randint(10,50))}
 
 datum3 = make_dates()
 a3 = {"imeAkcija" : "Izlet v London",
@@ -32,7 +49,8 @@ a3 = {"imeAkcija" : "Izlet v London",
                  " and I will give you a complete account of the system, and expound the actual teachings of the gre",
     "zacetek" : datum3[0],
     "konec" : datum3[1],
-      "organizator" : 103}
+      "organizator" : 103,
+      "udelezenci": random.sample(range(1, 150), random.randint(10,50))}
 
 datum4 = make_dates()
 a4 = {"imeAkcija" : "Izlet v Moskvo",
@@ -40,7 +58,8 @@ a4 = {"imeAkcija" : "Izlet v Moskvo",
                  " sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pro",
     "zacetek" : datum4[0],
     "konec" : datum4[1],
-      "organizator" : 104}
+      "organizator" : 104,
+      "udelezenci": random.sample(range(1, 150), random.randint(10,50))}
 
 datum5 = make_dates()
 a5 = {"imeAkcija" : "Izlet v Divačo",
@@ -48,7 +67,8 @@ a5 = {"imeAkcija" : "Izlet v Divačo",
                  " blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large.",
     "zacetek" : datum5[0],
     "konec" : datum5[1],
-      "organizator" : 105}
+      "organizator" : 105,
+      "udelezenci": random.sample(range(1, 150), random.randint(10,50))}
 
 datum6 = make_dates()
 a6 = {"imeAkcija" : "Izlet v Komen",
@@ -56,7 +76,8 @@ a6 = {"imeAkcija" : "Izlet v Komen",
                  " I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was.",
     "zacetek" : datum6[0],
     "konec" : datum6[1],
-      "organizator" : 106}
+      "organizator" : 106,
+      "udelezenci": random.sample(range(1, 150), random.randint(10,50))}
 
 datum7 = make_dates()
 a7 = {"imeAkcija" : "Izlet v Honolulu",
@@ -64,7 +85,8 @@ a7 = {"imeAkcija" : "Izlet v Honolulu",
                  " a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could se",
     "zacetek" : datum7[0],
     "konec" : datum7[1],
-      "organizator" : 107}
+      "organizator" : 107,
+      "udelezenci": random.sample(range(1, 150), random.randint(10,50))}
 
 polne_akcije = [a1,a2,a3,a4,a5,a6,a7]
 

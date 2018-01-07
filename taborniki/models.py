@@ -62,8 +62,8 @@ class Rod(models.Model):
 class Akcija(models.Model):
     imeAkcija = models.CharField(max_length=50)
     porocilo = models.TextField(max_length=10000)
-    zacetek = models.DateTimeField
-    konec = models.DateTimeField
+    zacetek = models.DateTimeField(null=True)
+    konec = models.DateTimeField(null=True)
     organizator = models.OneToOneField("Oseba", null=True)
     udelezenci = models.ManyToManyField("Oseba",
                                         #on_delete=models.CASCADE,
