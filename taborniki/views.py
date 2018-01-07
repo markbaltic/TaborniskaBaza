@@ -49,12 +49,12 @@ def index(request):
     rcbClani = Oseba.objects.all().filter(vod__rod=1002).__len__()
 
     #akcija z največ udeleženci
-    #akcijaNAJ = Akcija.objects.all().values('imeAkcija').annotate(total=Count('udelezenci')).order_by('-total')[0]['imeAkcija']
-    #akcija = Akcija.objects.get(imeAkcija=akcijaNAJ)
+    akcijaNAJ = Akcija.objects.all().values('imeAkcija').annotate(total=Count('udelezenci')).order_by('-total')[0]['imeAkcija']
+    akcija = Akcija.objects.get(imeAkcija=akcijaNAJ)
 
     #udeleženec največ akcij
-    clanNAJ = Oseba.objects.all().values('akcija__udelezenci').annotate(total=Count('udelezenci')).order_by('-total')
-    print(clanNAJ)
+    #clanNAJ = Oseba.objects.all().values('akcija__udelezenci').annotate(total=Count('udelezenci')).order_by('-total')
+    #print(clanNAJ)
     return render(request,'taborniki/home.html',  {'form': form, 'ime':clan.ime, 'priimek':clan.priimek, 'rkjVodi':rkjVodi,
                                                    'rorVodi':rorVodi, 'rcbVodi':rcbVodi,
                                                    'rkjClani': rkjClani,
