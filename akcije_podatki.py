@@ -72,7 +72,7 @@ st=1
 sez = []
 for akcija in polne_akcije:
     trenutni = dict()
-    trenutni['model'] = "taborniki.Akcije"
+    trenutni['model'] = "taborniki.Akcija"
     trenutni['pk']=st
     trenutni['fields']=akcija
 
