@@ -1,4 +1,5 @@
 from django import forms
+from taborniki.models import  Oseba
 
 class NameForm(forms.Form):
     ime = forms.CharField(label="ime", max_length=100, required=False, initial='')
@@ -15,3 +16,6 @@ class DodajClan(forms.Form):
 
 class Search(forms.Form):
     q = forms.CharField(label = "q", max_length=100, required=True)
+
+class DodajClanaVodu(forms.Form):
+    izbrani_clan = forms.ModelChoiceField(queryset=Oseba.objects.all())

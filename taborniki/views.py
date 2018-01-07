@@ -7,7 +7,8 @@ import django.contrib.postgres.search as search
 from django.http import HttpResponse
 from taborniki.models import Oseba, Vod, Rod, Akcija
 from django.db.models import Q, Count
-from .forms import NameForm, DodajClan, Search
+from .forms import NameForm, DodajClan, Search, DodajClanaVodu
+
 
 
 
@@ -121,3 +122,6 @@ def get_akcija(request, akcija_id):
     akcija = Akcija.objects.get(id=akcija_id)
     akcijaudelezenci = akcija.udelezenci.all()
     return render(request,'taborniki/akcija.html',{'akcija':akcija, 'akcijaudelezenci':akcijaudelezenci})
+
+def dodaj_clana_vodu(request, vod_id):
+    return render(request, 'taborniki/dodaj_clana_vodu.html', {'form': DodajClanaVodu, 'vod': vod_id})
