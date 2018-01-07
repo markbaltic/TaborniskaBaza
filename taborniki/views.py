@@ -5,7 +5,7 @@ from itertools import chain
 from django.shortcuts import render, redirect
 import django.contrib.postgres.search as search
 from django.http import HttpResponse
-from taborniki.models import Oseba, Vod, Rod
+from taborniki.models import Oseba, Vod, Rod, Akcija
 from django.db.models import Q, Count
 from .forms import NameForm, DodajClan, Search
 
@@ -16,17 +16,18 @@ def search_results(request):
     if form.is_valid():
         isci = form.cleaned_data['q']
         # poiščemo po imenu
-        clani1 = Oseba.objects.filter(ime__contains=isci)
-        # poiščemo po priimku
-        clani2 = Oseba.objects.filter(priimek__contains=isci)
-        # združimo in odstranimo duplikate
-        clani = list(set(list(chain(clani1, clani2))))
+        clani = list(set(list(Oseba.objects.filter(Q(ime__icontains=isci)|Q(priimek__icontains=isci)))))
+
         # najdemo vode
-        vodi = list(Vod.objects.filter(imeVod__contains = isci))
+        vodi = list(Vod.objects.filter(imeVod__icontains = isci))
         #najdemo rode
-        rodi = list(Rod.objects.filter(imeRod__contains=isci))
-        if clani or vodi or rodi:
-            return render(request, 'taborniki/tabele.html', {'clani': clani, 'vodi':vodi, 'rodi' : rodi})
+        rodi = list(Rod.objects.filter(imeRod__icontains=isci))
+        #najdemo akcije
+        print(isci)
+        akcije = list(set(list(Akcija.objects.filter(imeAkcija__icontains=isci))))
+        print(akcije)
+        if clani or vodi or rodi or akcije:
+            return render(request, 'taborniki/tabele.html', {'clani': clani, 'vodi':vodi, 'rodi' : rodi, 'akcije' : akcije})
         else:
             return render(request, 'taborniki/no_results.html', {'isci': isci})
     else:
@@ -46,11 +47,19 @@ def index(request):
     rkjClani = Oseba.objects.all().filter(vod__rod = 1000).__len__()
     rorClani = Oseba.objects.all().filter(vod__rod=1001).__len__()
     rcbClani = Oseba.objects.all().filter(vod__rod=1002).__len__()
- 
+
+    #akcija z največ udeleženci
+    #akcijaNAJ = Akcija.objects.all().values('imeAkcija').annotate(total=Count('udelezenci')).order_by('-total')[0]['imeAkcija']
+    #akcija = Akcija.objects.get(imeAkcija=akcijaNAJ)
+
+    #udeleženec največ akcij
+    clanNAJ = Oseba.objects.all().values('akcija__udelezenci').annotate(total=Count('udelezenci')).order_by('-total')
+    print(clanNAJ)
     return render(request,'taborniki/home.html',  {'form': form, 'ime':clan.ime, 'priimek':clan.priimek, 'rkjVodi':rkjVodi,
                                                    'rorVodi':rorVodi, 'rcbVodi':rcbVodi,
                                                    'rkjClani': rkjClani,
-                                                   'rorClani': rorClani, 'rcbClani': rcbClani
+                                                   'rorClani': rorClani, 'rcbClani': rcbClani,
+                                                   'akcija': akcija
                                                    } )
 
 def login(request):
@@ -107,3 +116,8 @@ def odstrani_clan(request, clan_id):
     clan = Oseba.objects.get(id=clan_id)
     clan.delete()
     return redirect('/taborniki/index')
+
+def get_akcija(request, akcija_id):
+    akcija = Akcija.objects.get(id=akcija_id)
+    akcijaudelezenci = akcija.udelezenci.all()
+    return render(request,'taborniki/akcija.html',{'akcija':akcija, 'akcijaudelezenci':akcijaudelezenci})
