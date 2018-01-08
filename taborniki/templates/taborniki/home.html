@@ -21,52 +21,52 @@
         }
     </style>
 
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-            google.charts.load('current', {'packages': ['bar']});
-            google.charts.setOnLoadCallback(drawChart);
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages': ['bar']});
+        google.charts.setOnLoadCallback(drawChart);
 
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                    ['rod', 'Clani', 'Vodi'],
-                    ['rkj', {{ rkjClani }}, {{ rkjVodi }}],
-                    ['ror', {{ rorClani }}, {{ rorVodi }}],
-                    ['rcb', {{ rcbClani }}, {{ rcbVodi }}]
-                ]);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['rod', 'Clani', 'Vodi'],
+                ['rkj', {{ rkjClani }}, {{ rkjVodi }}],
+                ['ror', {{ rorClani }}, {{ rorVodi }}],
+                ['rcb', {{ rcbClani }}, {{ rcbVodi }}]
+            ]);
 
-                var options = {
-                    chart: {
-                        title: 'Število članov in vodov',
-                        subtitle: 'Po rodovih'
-                    },
-                    bars: 'horizontal' // Required for Material Bar Charts.
-                };
+            var options = {
+                chart: {
+                    title: 'Število članov in vodov',
+                    subtitle: 'Po rodovih'
+                },
+                bars: 'horizontal' // Required for Material Bar Charts.
+            };
 
-                var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+            var chart = new google.charts.Bar(document.getElementById('barchart_material'));
 
-                chart.draw(data, google.charts.Bar.convertOptions(options));
-            }
-        </script>
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script>
-    google.charts.load('current', { 'packages': ['map'] });
-    google.charts.setOnLoadCallback(drawMap);
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load('current', {'packages': ['map']});
+        google.charts.setOnLoadCallback(drawMap);
 
-    function drawMap() {
-      var data = google.visualization.arrayToDataTable({{ koordinate|safe }});
+        function drawMap() {
+            var data = google.visualization.arrayToDataTable({{ koordinate|safe }});
 
-    var options = {
-      showTooltip: true,
-      showInfoWindow: true
-    };
+            var options = {
+                showTooltip: true,
+                showInfoWindow: true
+            };
 
-    var map = new google.visualization.Map(document.getElementById('chart_div'));
+            var map = new google.visualization.Map(document.getElementById('chart_div'));
 
-    map.draw(data, options);
-  };
-  </script>
-        {% endblock %}
+            map.draw(data, options);
+        };
+    </script>
+{% endblock %}
 
 
 {% block content %}
@@ -87,10 +87,11 @@
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
 
-                    <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" href="{% url 'akcija' akcijaNAJ.id %}">
+                    <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect"
+                       href="{% url 'akcija' akcijaNAJ.id %}">
 
-                            Pojdi na akcijo
-                        </a>
+                        Pojdi na akcijo
+                    </a>
                 </div>
             </div>
         </div>
@@ -98,7 +99,8 @@
         <div class="mdl-cell--stretch">
             <div class="mdl-card mdl-shadow--2dp demo-card-square">
                 <div class="mdl-card__title mdl-card--expand">
-                    <h2 class="mdl-card__title-text">Udeleženec največ akcij: {{ clanNAJ.ime }} {{ clanNAJ.priimek }}</h2>
+                    <h2 class="mdl-card__title-text">Udeleženec največ
+                        akcij: {{ clanNAJ.ime }} {{ clanNAJ.priimek }}</h2>
                     <h3 class="mdl-card__title-text"></h3>
                 </div>
 
@@ -127,10 +129,11 @@
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
 
-                    <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" href="{% url 'profil' clanNAJ.id %}">
+                    <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect"
+                       href="{% url 'profil' clanNAJ.id %}">
 
-                            Pojdi na osebo
-                        </a>
+                        Pojdi na osebo
+                    </a>
 
                 </div>
             </div>
