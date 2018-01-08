@@ -52,7 +52,7 @@ urlpatterns = [
     url(r'^taborniki/profil/odstrani/(?P<clan_id>[0-9]+)$', views.odstrani_clan , name='odstraniClan'),
     url(r'^taborniki/akcija/(?P<akcija_id>[0-9]+)$', views.get_akcija , name='akcija'),
     url(r'^taborniki/akcija/dodaj/(?P<akcija_id>[0-9]+)$', views.dodaj_clana_akciji , name='dodaj_clana_akciji'),
-    url(r'^$', auth_views.login, {'template_name': 'taborniki/login.html'} , name='login'),
+    url(r'^taborniki/$', auth_views.login, {'template_name': 'taborniki/login.html'} , name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^admin/', admin.site.urls)
 
