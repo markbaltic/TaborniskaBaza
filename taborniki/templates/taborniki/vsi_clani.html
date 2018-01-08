@@ -1,0 +1,18 @@
+{% extends "taborniki/base.html" %}
+
+{% block content %}
+<p>Člani so: </p>
+                <ul class="demo-list-icon mdl-list">
+                    {% for clan in clani %}
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                <a href="{% url 'profil' clan.id %}">
+                                    <i class="material-icons mdl-list__item-icon">face</i>
+                                </a>
+                                {{ clan.ime }}  {{ clan.priimek }}
+                            </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+{% endblock %}
