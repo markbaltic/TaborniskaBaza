@@ -6,8 +6,6 @@
 
 
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
 
 
@@ -22,8 +20,9 @@
 
         }
     </style>
-{% block content %}
-    <head>
+
+
+    {% block head %}
 
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
@@ -47,66 +46,58 @@
             }
         </script>
 
+{% endblock %}
 
 
 
-</head>
-
-
-
+{% block content %}
 
     <body>
 
 
 
-
-    <div>
         <!-- Square card -->
 
 
-<div class="content-grid mdl-grid">
-        <div class="mdl-cell--strech">
-        <div class="demo-card-square mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">{{ rod.imeRod }}</h2>
-            </div>
-            <div class="mdl-card__supporting-text">
+        <div class="content-grid mdl-grid">
+            <div class="mdl-cell--strech">
+                <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                        <h2 class="mdl-card__title-text">{{ rod.imeRod }}</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
 
-                <p>Rod: {{ rod.imeRod }} </p>
+                        <p>Rod: {{ rod.imeRod }} </p>
 
-                <p>Vodi so:</p>
-                <ul class="demo-list-icon mdl-list">
-                    {% for vod in vodi %}
-                        <li class="mdl-list__item">
+                        <p>Vodi so:</p>
+                        <ul class="demo-list-icon mdl-list">
+                            {% for vod in vodi %}
+                                <li class="mdl-list__item">
                             <span class="mdl-list__item-primary-content">
                                 <a href="{% url 'vod' vod.id %}">
                                     <i class="material-icons mdl-list__item-icon">face</i>
                                 </a>
                                 {{ vod.imeVod }}
                             </span>
-                        </li>
-                    {% endfor %}
-                </ul>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <div class="mdl-cell--strech">
+                <div class="demo-card-square mdl-card mdl-shadow--1dp">
+
+
+                    <div id="barchart_material" style="width: 500px; height: 500px;"></div>
+
+
+                </div>
+
+            </div>
+
+
         </div>
-    </div>
-             <div class="mdl-cell--strech">
-    <div class="demo-card-square mdl-card mdl-shadow--1dp">
-
-
-            <div id="barchart_material" style="width: 500px; height: 500px;"></div>
-
-
-</div>
-
-    </div>
-
-
-    </div>
-
-</div>
-
-
 
 
 

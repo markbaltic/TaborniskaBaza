@@ -73,6 +73,7 @@ class Akcija(models.Model):
                                         null = True)
 
 
+
 class Clanarine(models.Model):
     leto = models.DateField
     clan = models.ForeignKey("Oseba",
