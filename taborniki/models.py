@@ -25,7 +25,7 @@ class Vod(models.Model):
                                null=True)
 
     def __str__(self):
-        return self.imeVod + ' (' + self.rod.imeRod + ')'
+        return self.imeVod.title() + ' (' + self.rod.imeRod.title() + ')'
 class Oseba(models.Model):
     ime = models.CharField(max_length=50)
     priimek = models.CharField(max_length=50)
@@ -42,7 +42,7 @@ class Oseba(models.Model):
 
 
     def __str__(self):
-        return self.ime + ' ' + self.priimek
+        return self.ime.title() + ' ' + self.priimek.title()
 
 
 class Rod(models.Model):
@@ -70,7 +70,7 @@ class Akcija(models.Model):
     udelezenci = models.ManyToManyField("Oseba",
                                         #on_delete=models.CASCADE,
                                         related_name='akcija_clan',
-                                        null=True)
+                                        null = True)
 
 
 class Clanarine(models.Model):

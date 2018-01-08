@@ -7,7 +7,7 @@ import django.contrib.postgres.search as search
 from django.http import HttpResponse
 from taborniki.models import Oseba, Vod, Rod, Akcija
 from django.db.models import Q, Count
-from .forms import NameForm, DodajClan, Search, DodajClanaVodu
+from .forms import NameForm, DodajClan, Search, DodajClanaVodu, DodajAkcija
 
 
 def search_results(request):
@@ -96,11 +96,7 @@ def get_rod(request, rod_id):
 
 def dodajClan(request):
     if request.method == 'POST':
-        print('nekej')
         form = DodajClan(request.POST)
-        print(request)
-        print(form)
-        print(form.is_valid())
         # check whether it's valid:
         if form.is_valid():
             print('valid form')
@@ -116,7 +112,7 @@ def dodajClan(request):
     else:
         form = DodajClan()
 
-    return render(request, 'taborniki/dodajClan.html', {'form': form})
+    return render(request, 'taborniki/dodaj_clan.html', {'form': form})
 
 
 def odstrani_clan(request, clan_id):
@@ -142,3 +138,30 @@ def dodaj_clana_vodu(request, vod_id):
         return redirect('/taborniki/vod/%s' % vod_id)
     else:
         return redirect('/taborniki/vod/%s' % vod_id)
+
+def dodajAkcija(request):
+    if request.method == 'POST':
+        form = DodajAkcija(request.POST)
+        print('sm')
+        # check whether it's valid:
+        print(form.is_valid())
+        print(form)
+        if form.is_valid():
+            print('valid form')
+            data = form.cleaned_data
+            print(data['organizator'])
+            print(data['udelezenci'])
+            akcija = Akcija.objects.create(imeAkcija=data['imeAkcija'], zacetek=data['zacetek'], porocilo=data['porocilo'],
+                                        organizator=data['organizator'], konec=data['konec'], udelezenci = data['udelezenci'])
+            akcija.save()
+
+            return redirect('/taborniki/akcija/%s' % akcija.id)
+
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = DodajAkcija()
+
+    return render(request, 'taborniki/dodaj_akcija.html', {'form': form})
+
+

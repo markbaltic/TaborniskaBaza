@@ -1,5 +1,5 @@
 from django import forms
-from taborniki.models import  Oseba,Vod
+from taborniki.models import  Oseba,Vod, Akcija
 
 class NameForm(forms.Form):
     ime = forms.CharField(label="ime", max_length=100, required=False, initial='')
@@ -20,3 +20,11 @@ class Search(forms.Form):
 
 class DodajClanaVodu(forms.Form):
     izbrani_clan = forms.ModelChoiceField(queryset=Oseba.objects.all())
+
+class DodajAkcija(forms.Form):
+    imeAkcija = forms.CharField(max_length=100)
+    porocilo = forms.CharField(label='porocilo')
+    zacetek = forms.DateField()
+    konec = forms.DateField()
+    organizator = forms.ModelChoiceField(queryset=Oseba.objects.all())
+    udelezenci = forms.ModelMultipleChoiceField(queryset=Oseba.objects.all())

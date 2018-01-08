@@ -40,6 +40,7 @@ urlpatterns = [
 
     url(r'^taborniki/clani', views.clani, name='clani'),
     url(r'^taborniki/profil/(?P<clan_id>[0-9]+)$', views.get_name , name='profil'),
+    url(r'^taborniki/dodajAkcija', views.dodajAkcija , name='dodajAkcija'),
     url(r'^taborniki/dodaj', views.dodajClan , name='dodaj'),
     url(r'^taborniki/vod/(?P<vod_id>[0-9]+)$', views.get_vod , name='vod'),
     url(r'^taborniki/vod/dodaj/(?P<vod_id>[0-9]+)$', views.dodaj_clana_vodu , name='dodaj_clana_vodu'),
