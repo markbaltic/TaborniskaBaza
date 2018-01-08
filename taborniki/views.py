@@ -7,7 +7,7 @@ import django.contrib.postgres.search as search
 from django.http import HttpResponse
 from taborniki.models import Oseba, Vod, Rod, Akcija
 from django.db.models import Q, Count
-from .forms import NameForm, DodajClan, Search, DodajClanaVodu, DodajAkcija
+from .forms import NameForm, DodajClan, Search, DodajClanaVodu, DodajAkcija, DodajClanaAkciji
 
 
 def search_results(request):
@@ -46,19 +46,21 @@ def index(request):
     rcbClani = Oseba.objects.all().filter(vod__rod=1002).__len__()
 
     # akcija z največ udeleženci
-    akcijaNAJ = Akcija.objects.all().values('imeAkcija').annotate(total=Count('udelezenci')).order_by('-total')[0][
+    akcijaNAJ_id = Akcija.objects.all().values('imeAkcija').annotate(total=Count('udelezenci')).order_by('-total')[0][
         'imeAkcija']
-    akcija = Akcija.objects.get(imeAkcija=akcijaNAJ)
+    akcijaNAJ = Akcija.objects.get(imeAkcija=akcijaNAJ_id)
 
     # udeleženec največ akcij
+    clanNAJ_id = Oseba.objects.all().values('id').annotate(total=Count('akcija_clan')).order_by('-total')[0]['id']
+    clanNAJ = Oseba.objects.get(id = clanNAJ_id)
+    clanNAJ_akcije = Akcija.objects.all().filter(udelezenci__id = clanNAJ_id)
     # clanNAJ = Oseba.objects.all().values('akcija__udelezenci').annotate(total=Count('udelezenci')).order_by('-total')
-    # print(clanNAJ)
     return render(request, 'taborniki/home.html',
                   {'form': form, 'ime': clan.ime, 'priimek': clan.priimek, 'rkjVodi': rkjVodi,
                    'rorVodi': rorVodi, 'rcbVodi': rcbVodi,
                    'rkjClani': rkjClani,
                    'rorClani': rorClani, 'rcbClani': rcbClani,
-                   'akcija': akcija
+                   'akcijaNAJ': akcijaNAJ, 'clanNAJ' : clanNAJ, 'clanNAJ_akcije': clanNAJ_akcije
                    })
 
 
@@ -124,9 +126,10 @@ def odstrani_clan(request, clan_id):
 
 
 def get_akcija(request, akcija_id):
+    form = DodajClanaAkciji(request.GET)
     akcija = Akcija.objects.get(id=akcija_id)
     akcijaudelezenci = akcija.udelezenci.all()
-    return render(request, 'taborniki/akcija.html', {'akcija': akcija, 'akcijaudelezenci': akcijaudelezenci})
+    return render(request, 'taborniki/akcija.html', {'akcija': akcija, 'akcijaudelezenci': akcijaudelezenci, 'form':form})
 
 
 def dodaj_clana_vodu(request, vod_id):
@@ -163,4 +166,24 @@ def dodajAkcija(request):
 
     return render(request, 'taborniki/dodaj_akcija.html', {'form': form})
 
+def dodaj_clana_akciji(request, akcija_id):
+    form = DodajClanaAkciji(request.GET)
+    if form.is_valid():
+        clan = form.cleaned_data['izbrani_clan']
+        akcija = Akcija.objects.get(id=akcija_id)
+        akcija.udelezenci.add(clan)
+        akcija.save()
+        return redirect('/taborniki/akcija/%s' % akcija_id)
+    else:
+        return redirect('/taborniki/akcija/%s' % akcija_id)
 
+def vsi_clani(request):
+    clani = Oseba.objects.all()
+    return render(request, 'taborniki/vsi_clani.html', {'clani': clani})
+
+def vsi_vodi(request):
+    vodi = Vod.objects.all()
+    return render(request, 'taborniki/vsi_vodi.html', {'vodi': vodi})
+def vse_akcije(request):
+    akcije = Akcija.objects.all()
+    return render(request, 'taborniki/vse_akcije.html', {'akcije': akcije})

@@ -39,6 +39,9 @@ urlpatterns = [
     url(r'^taborniki/search', views.search_results, name='search'),
 
     url(r'^taborniki/clani', views.clani, name='clani'),
+    url(r'^taborniki/vsiclani', views.vsi_clani, name='vsiClani'),
+    url(r'^taborniki/vsivodi', views.vsi_vodi, name='vsiVodi'),
+    url(r'^taborniki/vseakcije', views.vse_akcije, name='vseAkcije'),
     url(r'^taborniki/profil/(?P<clan_id>[0-9]+)$', views.get_name , name='profil'),
     url(r'^taborniki/dodajAkcija', views.dodajAkcija , name='dodajAkcija'),
     url(r'^taborniki/dodaj', views.dodajClan , name='dodaj'),
@@ -47,6 +50,7 @@ urlpatterns = [
     url(r'^taborniki/rod/(?P<rod_id>[0-9]+)$', views.get_rod , name='rod'),
     url(r'^taborniki/profil/odstrani/(?P<clan_id>[0-9]+)$', views.odstrani_clan , name='odstraniClan'),
     url(r'^taborniki/akcija/(?P<akcija_id>[0-9]+)$', views.get_akcija , name='akcija'),
+    url(r'^taborniki/akcija/dodaj/(?P<akcija_id>[0-9]+)$', views.dodaj_clana_akciji , name='dodaj_clana_akciji'),
     url(r'^$', auth_views.login, {'template_name': 'taborniki/login.html'} , name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^admin/', admin.site.urls)
