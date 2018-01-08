@@ -67,10 +67,11 @@
                     {{ akcijaNAJ.porocilo }}
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
-                        <a href="{% url 'akcija' akcijaNAJ.id %}">
+
+                    <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" href="{% url 'akcija' akcijaNAJ.id %}">
+
                             Pojdi na akcijo
-                        </a></a>
+                        </a>
                 </div>
             </div>
         </div>
@@ -93,7 +94,6 @@
                             </span>
                         </p>
                     {% endfor %}
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.
                 </div>
                 <div>
                     {% for akcija in clan.akcija_clan %}
@@ -107,10 +107,11 @@
                     {% endfor %}
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
-                        <a href="{% url 'profil' clanNAJ.id %}">
+
+                    <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" href="{% url 'profil' clanNAJ.id %}">
+
                             Pojdi na osebo
-                        </a> </a>
+                        </a>
 
                 </div>
             </div>

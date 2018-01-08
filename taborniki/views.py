@@ -189,3 +189,12 @@ def vsi_vodi(request):
 def vse_akcije(request):
     akcije = Akcija.objects.all()
     return render(request, 'taborniki/vse_akcije.html', {'akcije': akcije})
+def odstrani_clana_voda(request, clan_id):
+    clan = Oseba.objects.get(id = clan_id)
+    vod_id = clan.vod.id
+    #neuvrsceni rod id
+    rod_id = clan.vod.rod.id
+    vod = Vod.objects.get(rod = rod_id, imeVod = 'neuvrsceni')
+    clan.vod = vod
+    clan.save()
+    return redirect('/taborniki/vod/%s' % vod_id)

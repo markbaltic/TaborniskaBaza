@@ -41,6 +41,7 @@ urlpatterns = [
     url(r'^taborniki/clani', views.clani, name='clani'),
     url(r'^taborniki/vsiclani', views.vsi_clani, name='vsiClani'),
     url(r'^taborniki/vsivodi', views.vsi_vodi, name='vsiVodi'),
+    url(r'^taborniki/odstraniclanavoda/(?P<clan_id>[0-9]+)$', views.odstrani_clana_voda, name='odstraniClanaVoda'),
     url(r'^taborniki/vseakcije', views.vse_akcije, name='vseAkcije'),
     url(r'^taborniki/profil/(?P<clan_id>[0-9]+)$', views.get_name , name='profil'),
     url(r'^taborniki/dodajAkcija', views.dodajAkcija , name='dodajAkcija'),

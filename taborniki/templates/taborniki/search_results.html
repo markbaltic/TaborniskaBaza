@@ -50,12 +50,12 @@
                 <p>Pišeš mi lahko na: {{ clan.email }}</p>
             </div>
             <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                    <p>Moj vod: <a href="{% url 'vod' clan.vod.id %}">{{ clan.vod.imeVod }}</a></p>
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"  href="{% url 'vod' clan.vod.id %}">
+                    <p>Moj vod: {{ clan.vod.imeVod }}</p>
 
                 </a>
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                    <p>Moj rod: <a href="{% url 'rod' clan.vod.rod.id %}">{{ clan.vod.rod.imeRod }}</a></p>
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{% url 'rod' clan.vod.rod.id %}">
+                    <p>Moj rod:{{ clan.vod.rod.imeRod }}</p>
 
                 </a>
             </div>
