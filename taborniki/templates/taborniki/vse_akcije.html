@@ -1,0 +1,18 @@
+{% extends "taborniki/base.html" %}
+
+{% block content %}
+<p>Člani so: </p>
+                <ul class="demo-list-icon mdl-list">
+                    {% for akcija in akcije %}
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                <a href="{% url 'akcija' akcija.id %}">
+                                    <i class="material-icons mdl-list__item-icon">face</i>
+                                </a>
+                                {{ akcija.imeAkcija }}
+                            </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+{% endblock %}
