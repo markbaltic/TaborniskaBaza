@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from taborniki.models import Oseba, Vod, Rod, Akcija
 from django.db.models import Q, Count
 from .forms import NameForm, DodajClan, Search, DodajClanaVodu
+import json
 
 
 def search_results(request):
@@ -91,7 +92,13 @@ def get_vod(request, vod_id):
 def get_rod(request, rod_id):
     rod = Rod.objects.get(id=rod_id)
     vodi = rod.rodov_vod.all()
-    return render(request, 'taborniki/rod.html', {'rod': rod, 'vodi': vodi})
+    clani_po_vodih = [['VOD','ST CLANOV']]
+    for vod in vodi:
+        clani_po_vodih.append([vod.imeVod, len(vod.vod_clan.all())])
+
+
+    print(clani_po_vodih)
+    return render(request, 'taborniki/rod.html', {'rod': rod, 'vodi': vodi, 'clani_po_vodih': json.dumps(clani_po_vodih)})
 
 
 def dodajClan(request):
