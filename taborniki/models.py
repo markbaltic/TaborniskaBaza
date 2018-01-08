@@ -71,7 +71,8 @@ class Akcija(models.Model):
                                         #on_delete=models.CASCADE,
                                         related_name='akcija_clan',
                                         null = True)
-
+    x = models.FloatField(null=True)
+    y = models.FloatField(null=True)
 
 
 class Clanarine(models.Model):

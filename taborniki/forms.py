@@ -28,6 +28,8 @@ class DodajAkcija(forms.Form):
     konec = forms.DateField()
     organizator = forms.ModelChoiceField(queryset=Oseba.objects.all())
     udelezenci = forms.ModelMultipleChoiceField(queryset=Oseba.objects.all())
+    x = forms.FloatField()
+    y = forms.FloatField()
 
 class DodajClanaAkciji(forms.Form):
     izbrani_clan = forms.ModelChoiceField(queryset=Oseba.objects.all())
