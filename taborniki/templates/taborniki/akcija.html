@@ -47,6 +47,7 @@
                 <p>Ime: {{ akcija.imeAkcija }} </p>
                 <p>Poročilo: {{ akcija.porocilo}}</p>
                 <p>Člani so: </p>
+            <div style="height:220px;width:220px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
                 <ul class="demo-list-icon mdl-list">
                     {% for clan in akcijaudelezenci %}
                         <li class="mdl-list__item">
@@ -59,6 +60,7 @@
                         </li>
                     {% endfor %}
                 </ul>
+            </div>
             </div>
             {#            Dodaj clan v vod#}
             <div>
