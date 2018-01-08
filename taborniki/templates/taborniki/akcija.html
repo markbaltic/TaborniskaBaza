@@ -60,6 +60,17 @@
                     {% endfor %}
                 </ul>
             </div>
+            {#            Dodaj clan v vod#}
+            <div>
+
+                <form action="{% url 'dodaj_clana_akciji'  akcija.id %}" method="GET">
+                    {% csrf_token %}
+                    {{form}}
+                    <input  type="submit" class="mdl-button" value="Dodaj clana">
+
+                </form>
+
+            </div>
         </div>
     </div>
 
