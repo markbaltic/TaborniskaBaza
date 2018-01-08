@@ -149,17 +149,13 @@ def dodajAkcija(request):
         if form.is_valid():
             print('valid form')
             data = form.cleaned_data
-            print(data['organizator'])
-            print(data['udelezenci'])
             akcija = Akcija.objects.create(imeAkcija=data['imeAkcija'], zacetek=data['zacetek'], porocilo=data['porocilo'],
                                         organizator=data['organizator'], konec=data['konec'])
             akcija.save()
-            akcija.udelezenci.set(data['udelezenci'])
+            akcija.udelezenci=data['udelezenci']
             akcija.save()
 
             return redirect('/taborniki/akcija/%s' % akcija.id)
-
-
     # if a GET (or any other method) we'll create a blank form
     else:
         form = DodajAkcija()
