@@ -6,10 +6,9 @@
 
 
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-{% block content %}
+{% block head %}
+
     <style>
         .demo-card-square.mdl-card {
             width: 320px;
@@ -21,7 +20,7 @@
             background: url('../assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
         }
     </style>
-    <head>
+
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
             google.charts.load('current', {'packages': ['bar']});
@@ -48,9 +47,10 @@
                 chart.draw(data, google.charts.Bar.convertOptions(options));
             }
         </script>
-    </head>
+        {% endblock %}
 
 
+{% block content %}
     <body>
     <!-- Square card -->
     <div class="content-grid mdl-grid">
@@ -79,7 +79,7 @@
         <div class="mdl-cell--stretch">
             <div class="mdl-card mdl-shadow--2dp demo-card-square">
                 <div class="mdl-card__title mdl-card--expand">
-                    <h2 class="mdl-card__title-text">Udeleženec največ akcij: {{ clan.ime }} {{ clan.priimek }}</h2>
+                    <h2 class="mdl-card__title-text">Udeleženec največ akcij: {{ clanNAJ.ime }} {{ clanNAJ.priimek }}</h2>
                     <h3 class="mdl-card__title-text"></h3>
                 </div>
 
@@ -88,7 +88,7 @@
                         <p>
                             <span class="mdl-list__item-primary-content">
                                 <a href="{% url 'akcija' akcija.id %}">
-                                    <i class="material-icons mdl-list__item-icon">face</i>
+                                    <i class="material-icons mdl-list__item-icon">directions_bike</i>
                                 </a>
                                 {{ akcija.imeAkcija }}
                             </span>
