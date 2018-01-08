@@ -101,8 +101,13 @@
                                 <a href="{% url 'profil' clan.id %}">
                                     <i class="material-icons mdl-list__item-icon">face</i>
                                 </a>
-                                {{ clan.ime }}  {{ clan.priimek }}
+
                             </span>
+                        <span class="mdl-chip mdl-chip--contact mdl-chip--deletable">
+
+    <span class="mdl-chip__text">{{ clan.ime }}  {{ clan.priimek }}</span>
+    <a href="{% url 'odstraniClanaVoda' clan.id %}" class="mdl-chip__action"><i class="material-icons">cancel</i></a>
+</span>
                         </li>
                     {% endfor %}
                 </ul>
