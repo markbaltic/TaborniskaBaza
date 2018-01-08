@@ -73,6 +73,8 @@ class Akcija(models.Model):
                                         null = True)
     x = models.FloatField(null=True)
     y = models.FloatField(null=True)
+    slika = models.CharField(max_length=1000,
+                             null=True)
 
 
 class Clanarine(models.Model):

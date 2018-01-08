@@ -30,6 +30,7 @@ class DodajAkcija(forms.Form):
     udelezenci = forms.ModelMultipleChoiceField(queryset=Oseba.objects.all())
     x = forms.FloatField()
     y = forms.FloatField()
+    slika = forms.CharField()
 
 class DodajClanaAkciji(forms.Form):
     izbrani_clan = forms.ModelChoiceField(queryset=Oseba.objects.all())

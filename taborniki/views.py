@@ -162,7 +162,8 @@ def dodajAkcija(request):
             print('valid form')
             data = form.cleaned_data
             akcija = Akcija.objects.create(imeAkcija=data['imeAkcija'], zacetek=data['zacetek'], porocilo=data['porocilo'],
-                                        organizator=data['organizator'], konec=data['konec'], x =data['x'], y = data['y'])
+                                        organizator=data['organizator'], konec=data['konec'], x =data['x'], y = data['y'],
+                                           slika = data['slika'])
             akcija.save()
             akcija.udelezenci=data['udelezenci']
             akcija.save()
