@@ -152,7 +152,9 @@ def dodajAkcija(request):
             print(data['organizator'])
             print(data['udelezenci'])
             akcija = Akcija.objects.create(imeAkcija=data['imeAkcija'], zacetek=data['zacetek'], porocilo=data['porocilo'],
-                                        organizator=data['organizator'], konec=data['konec'], udelezenci = data['udelezenci'])
+                                        organizator=data['organizator'], konec=data['konec'])
+            akcija.save()
+            akcija.udelezenci.set(data['udelezenci'])
             akcija.save()
 
             return redirect('/taborniki/akcija/%s' % akcija.id)
