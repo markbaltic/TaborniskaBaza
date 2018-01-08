@@ -54,22 +54,8 @@
     <body>
     <!-- Square card -->
     <div class="content-grid mdl-grid">
-        <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--2-col-phone">
-            <div class="mdl-card mdl-shadow--2dp demo-card-square">
-                <div class="mdl-card__title mdl-card--expand">
-                    <h2 class="mdl-card__title-text">{{ ime }} {{ priimek }}</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
-                        Action
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+
+        <div class="mdl-cell--stretch ">
             <div class="mdl-card mdl-shadow--2dp demo-card-square">
                 <div class="mdl-card__title mdl-card--expand">
                     <h1 class="mdl-card__title-text">Akcija z največ udeleženci</h1>
@@ -84,19 +70,20 @@
                     <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
                         <a href="{% url 'akcija' akcijaNAJ.id %}">
                             Pojdi na akcijo
-                        </a>
+                        </a></a>
                 </div>
             </div>
         </div>
-        <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--4-col-phone">
+
+        <div class="mdl-cell--stretch">
             <div class="mdl-card mdl-shadow--2dp demo-card-square">
                 <div class="mdl-card__title mdl-card--expand">
                     <h2 class="mdl-card__title-text">Udeleženec največ akcij: {{ clan.ime }} {{ clan.priimek }}</h2>
                     <h3 class="mdl-card__title-text"></h3>
                 </div>
 
-            <div class="mdl-card__supporting-text">
-                {% for akcija in clanNAJ_akcije %}
+                <div class="mdl-card__supporting-text">
+                    {% for akcija in clanNAJ_akcije %}
                         <p>
                             <span class="mdl-list__item-primary-content">
                                 <a href="{% url 'akcija' akcija.id %}">
@@ -123,15 +110,15 @@
                     <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
                         <a href="{% url 'profil' clanNAJ.id %}">
                             Pojdi na osebo
-                        </a>
+                        </a> </a>
+
                 </div>
             </div>
         </div>
-    <div>
-        <div  class="mdl-cell mdl-cell--2-col" id="barchart_material" style="width: 900px; height: 500px;"></div>
+        <div>
+            <div class="mdl-cell--stretch--bottom" id="barchart_material" style="width: 900px; height: 500px;"></div>
+        </div>
     </div>
-    </div>
-
 
 
     </body>
