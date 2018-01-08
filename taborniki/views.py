@@ -91,6 +91,7 @@ def get_vod(request, vod_id):
 def get_rod(request, rod_id):
     rod = Rod.objects.get(id=rod_id)
     vodi = rod.rodov_vod.all()
+    clani_po_vodih = []
     return render(request, 'taborniki/rod.html', {'rod': rod, 'vodi': vodi})
 
 
