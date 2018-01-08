@@ -29,20 +29,40 @@
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
+
+      if ({{ st_clanov }} > 15) {
+
         var data = google.visualization.arrayToDataTable([
           ['Zasedenost', 'Procenti'],
           ['',     {{ st_clanov }}],
-          ['',  15-{{ st_clanov }}]
+          ['',  0]
         ]);
-
         var options = {
-          title: 'Zasedenost voda',
+          title: 'VOD JE PREZASEDEN!',
           pieHole: 0.4,
           slices: {
             0: { color: 'blue' },
             1: { color: 'transparent' }},
 
         };
+
+        } else {
+        var data = google.visualization.arrayToDataTable([
+          ['Zasedenost', 'Procenti'],
+          ['',     {{ st_clanov }}],
+          ['',  15-{{ st_clanov }}]
+        ]);
+
+
+
+        var options = {
+          pieHole: 0.4,
+          slices: {
+            0: { color: 'blue' },
+            1: { color: 'transparent' }},
+
+        };
+        }
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
         chart.draw(data, options);
@@ -115,6 +135,7 @@
 
 
         </div>
+
     </div>
 
 
