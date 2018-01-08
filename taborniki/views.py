@@ -84,15 +84,16 @@ def get_name(request, clan_id):
 def get_vod(request, vod_id):
     vod = Vod.objects.get(id=vod_id)
     vsiclani = vod.vod_clan.all()
+    st_clanov = len(vsiclani)
 
-    return render(request, 'taborniki/vod.html', {'vod': vod, 'clani': vsiclani, 'form': DodajClanaVodu})
+    return render(request, 'taborniki/vod.html', {'vod': vod, 'clani': vsiclani, "st_clanov": st_clanov, 'form': DodajClanaVodu})
 
 
 def get_rod(request, rod_id):
     rod = Rod.objects.get(id=rod_id)
     vodi = rod.rodov_vod.all()
-    clani_po_vodih = []
-    return render(request, 'taborniki/rod.html', {'rod': rod, 'vodi': vodi})
+    clani_po_vodih = [['vod','clani'],['a',1],['b',2]]
+    return render(request, 'taborniki/rod.html', {'rod': rod, 'vodi': vodi, 'clani_po_vodih' : clani_po_vodih})
 
 
 def dodajClan(request):

@@ -31,11 +31,8 @@
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
-        <!--var data = google.visualization.arrayToDataTable(JSON.parse("{{ clani_po_vodih }}"));-->
-        var data = google.visualization.arrayToDataTable(
-        [['a','b'],
-        ['ena',1],
-        ['dva',2]]);
+        var data = google.visualization.arrayToDataTable({{ clani_po_vodih|safe }});
+
         var options = {
           title: 'Lengths of dinosaurs, in meters',
           legend: { position: 'none' },
