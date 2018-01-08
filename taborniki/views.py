@@ -120,6 +120,7 @@ def dodajClan(request):
 
 
 def odstrani_clan(request, clan_id):
+    print('odrstanjujem')
     clan = Oseba.objects.get(id=clan_id)
     clan.delete()
     return redirect('/taborniki/index')
