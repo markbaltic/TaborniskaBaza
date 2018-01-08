@@ -8,42 +8,65 @@
 {% load static %}
 
 
-<style>
-    .demo-card-square.mdl-card {
-        width: 320px;
-        height: 320px;
-    }
 
-    .demo-card-square > .mdl-card__title {
-        color: #fff;
 
-    }
-</style>
-{% block head %}
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load("current", {packages: ["corechart"]});
-        google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Zasedenost', 'Procenti'],
-                ['', {{ st_clanov }}],
-                ['', 15 -{{ st_clanov }}]
-            ]);
 
-            var options = {
-                title: 'Zasedenost voda',
-                pieHole: 0.4,
-                slices: {
-                    0: {color: 'blue'},
-                    1: {color: 'transparent'}
-                },
 
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-            chart.draw(data, options);
+    <style>
+        .demo-card-square.mdl-card {
+            width: 320px;
+            height: 320px;
         }
+
+        .demo-card-square > .mdl-card__title {
+            color: #fff;
+
+        }
+    </style>
+{% block head %}
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+      if ({{ st_clanov }} > 15) {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Zasedenost', 'Procenti'],
+          ['',     {{ st_clanov }}],
+          ['',  0]
+        ]);
+        var options = {
+          title: 'VOD JE PREZASEDEN!',
+          pieHole: 0.4,
+          slices: {
+            0: { color: 'blue' },
+            1: { color: 'transparent' }},
+
+        };
+
+        } else {
+        var data = google.visualization.arrayToDataTable([
+          ['Zasedenost', 'Procenti'],
+          ['',     {{ st_clanov }}],
+          ['',  15-{{ st_clanov }}]
+        ]);
+
+
+
+        var options = {
+          pieHole: 0.4,
+          slices: {
+            0: { color: 'blue' },
+            1: { color: 'transparent' }},
+
+        };
+        }
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
     </script>
 
 {% endblock %}
@@ -54,70 +77,69 @@
     <body>
 
 
+
+
     <div>
         <!-- Square card -->
 
-        <div class="content-grid mdl-grid">
-            <div class="mdl-cell--strech">
-                <div class="demo-card-square mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title mdl-card--expand">
-                        <h2 class="mdl-card__title-text">{{ vod.imeVod }}</h2>
-                    </div>
-                    <div class="mdl-card__supporting-text">
+<div class="content-grid mdl-grid">
+        <div class="mdl-cell--strech">
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand">
+                <h2 class="mdl-card__title-text">{{ vod.imeVod }}</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
 
-                        <p>Vod: {{ vod.imeVod }} </p>
-                        <p>Vodnik: {{ vod.vodnik }}</p>
-                        <p>Rod: {{ vod.rod.imeRod }}</p>
-                        <p>Člani so: </p>
-                        <ul class="demo-list-icon mdl-list">
-                            {% for clan in clani %}
-                                <li class="mdl-list__item">
+                <p>Vod: {{ vod.imeVod }} </p>
+                <p>Vodnik: {{ vod.vodnik }}</p>
+                <p>Rod: {{ vod.rod.imeRod }}</p>
+                <p>Člani so: </p>
+                <ul class="demo-list-icon mdl-list">
+                    {% for clan in clani %}
+                        <li class="mdl-list__item">
                             <span class="mdl-list__item-primary-content">
                                 <a href="{% url 'profil' clan.id %}">
                                     <i class="material-icons mdl-list__item-icon">face</i>
                                 </a>
-
-                                <span class="mdl-chip mdl-chip--contact mdl-chip--deletable">
-                                    <span class="mdl-chip__text"> {{ clan.ime }}  {{ clan.priimek }}</span>
-                                     <a href="{% url 'odstraniClanaVoda' clan.id %}" class="mdl-chip__action"><i class="material-icons">cancel</i></a>
-                                </span>
+                                {{ clan.ime }}  {{ clan.priimek }}
                             </span>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-
-                    {#            Dodaj clan v vod#}
-                    <div>
-
-                        <form action="{% url 'dodaj_clana_vodu'  vod.id %}" method="GET">
-                            {% csrf_token %}
-
-                            {{ form }}
-
-                            <input type="submit" class="mdl-button" value="Dodaj clana">
-
-                        </form>
-
-                    </div>
-
-                </div>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
-            <div class="mdl-cell--strech">
-                <div class="demo-card-square mdl-card mdl-shadow--1dp">
-                    <div>
-                        <h2 class="mdl-card__title-text">Zasedenost voda</h2>
-                    </div>
 
+            {#            Dodaj clan v vod#}
+            <div>
 
-                    <div id="donutchart" style="width: 500px; height: 500px; display: block; float: left;"></div>
+                <form action="{% url 'dodaj_clana_vodu'  vod.id %}" method="GET">
+                    {% csrf_token %}
 
+                    {{form}}
 
-                </div>
+                    <input  type="submit" class="mdl-button" value="Dodaj clana">
+
+                </form>
+
             </div>
+
+        </div>
+    </div>
+<div class="mdl-cell--strech">
+    <div class="demo-card-square mdl-card mdl-shadow--1dp">
+            <div>
+                <h2 class="mdl-card__title-text">Zasedenost voda</h2>
+            </div>
+
+
+            <div id="donutchart" style="width: 500px; height: 500px; display: block; float: left;"></div>
 
 
         </div>
+
+    </div>
+
+
+</div>
     </div>
     </body>
 
