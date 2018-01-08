@@ -94,7 +94,8 @@ def get_vod(request, vod_id):
 def get_rod(request, rod_id):
     rod = Rod.objects.get(id=rod_id)
     vodi = rod.rodov_vod.all()
-    clani_po_vodih = [['vod','clani'],['a',1],['b',2]]
+    clani_po_vodih = [[vod.imeVod, len(vod.vod_clan.all())] for vod in vodi]
+    clani_po_vodih.insert(0,['Vod','Število_članov'])
     return render(request, 'taborniki/rod.html', {'rod': rod, 'vodi': vodi, 'clani_po_vodih' : clani_po_vodih})
 
 
