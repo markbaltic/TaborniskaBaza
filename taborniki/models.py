@@ -24,6 +24,8 @@ class Vod(models.Model):
                                related_name='rodov_vod',
                                null=True)
 
+    def __str__(self):
+        return self.imeVod + ' (' + self.rod.imeRod + ')'
 class Oseba(models.Model):
     ime = models.CharField(max_length=50)
     priimek = models.CharField(max_length=50)

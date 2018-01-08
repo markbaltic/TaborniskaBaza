@@ -62,65 +62,18 @@
             </div>
 
             {#            Dodaj clan v vod#}
-            <button id="show-dialog" type="button" class="mdl-button">Dodaj člana</button>
+            <div>
 
-            <dialog class="mdl-dialog">
-                <h4 class="mdl-dialog__title">Dodam:</h4>
-               {% comment %} <div class="mdl-dialog__content">
+                <form action="{% url 'dodaj_clana_vodu'  vod.id %}" method="GET">
+                    {% csrf_token %}
 
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-                    <label class="mdl-button mdl-js-button mdl-button--icon"
-                           for="fixed-header-drawer-exp">
-                        <i class="material-icons">search</i>
-                    </label>
+                    {{form}}
 
-                    <div class="mdl-textfield__expandable-holder">
-                        <form action="{% url 'searchClan' %}" method="GET">
-                            <input class="mdl-textfield__input" type="text" name="q"
-                                   id="fixed-header-drawer-exp">
-                        </form>
-                    </div>
+                    <input  type="submit" class="mdl-button" value="Dodaj clana">
 
-                </div>
-                <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-                    <thead>
-                    <tr>
-                        <th class="mdl-data-table__cell--non-numeric">Material</th>
-                        <th>Quantity</th>
-                        <th>Unit price</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-                        <td>25</td>
-                        <td>$2.90</td>
-                    </tr>
+                </form>
 
-                    </tbody>
-                </table>
-
-                <div class="mdl-dialog__actions">
-                    <button type="button" class="mdl-button close">Ne</button>
-                    <button type="button" class="mdl-button "><a
-                            href="{% url 'dodajVVod' clani %}">Ja</a></button>
-                </div>
-            </dialog>
-            <script>
-                var dialog = document.querySelector('dialog');
-                var showDialogButton = document.querySelector('#show-dialog');
-                if (!dialog.showModal) {
-                    dialogPolyfill.registerDialog(dialog);
-                }
-                showDialogButton.addEventListener('click', function () {
-                    dialog.showModal().href();
-                });
-                dialog.querySelector('.close').addEventListener('click', function () {
-                    dialog.close();
-                });
-            </script>{% endcomment %}
+            </div>
 
         </div>
     </div>
