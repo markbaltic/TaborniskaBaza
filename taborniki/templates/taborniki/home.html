@@ -12,7 +12,7 @@
     <style>
         .demo-card-square.mdl-card {
             width: 320px;
-            height: 620px;
+            height: 500px;
         }
 
         .demo-card-square > .mdl-card__title {
@@ -54,7 +54,7 @@
     google.charts.setOnLoadCallback(drawMap);
 
     function drawMap() {
-      var data = google.visualization.arrayToDataTable(koordinate);
+      var data = google.visualization.arrayToDataTable({{ koordinate|safe }});
 
     var options = {
       showTooltip: true,

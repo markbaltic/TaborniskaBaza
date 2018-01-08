@@ -55,12 +55,18 @@ def index(request):
     clanNAJ = Oseba.objects.get(id = clanNAJ_id)
     clanNAJ_akcije = Akcija.objects.all().filter(udelezenci__id = clanNAJ_id)
     # clanNAJ = Oseba.objects.all().values('akcija__udelezenci').annotate(total=Count('udelezenci')).order_by('-total')
+    vse_akcijee = Akcija.objects.all()
+    koordinate = [[akc.x,akc.y,akc.imeAkcija] for akc in vse_akcijee]
+    koordinate.insert(0,['Lat','Long','Ime'])
+    print(koordinate)
+
     return render(request, 'taborniki/home.html',
                   {'form': form, 'ime': clan.ime, 'priimek': clan.priimek, 'rkjVodi': rkjVodi,
                    'rorVodi': rorVodi, 'rcbVodi': rcbVodi,
                    'rkjClani': rkjClani,
                    'rorClani': rorClani, 'rcbClani': rcbClani,
-                   'akcijaNAJ': akcijaNAJ, 'clanNAJ' : clanNAJ, 'clanNAJ_akcije': clanNAJ_akcije
+                   'akcijaNAJ': akcijaNAJ, 'clanNAJ' : clanNAJ, 'clanNAJ_akcije': clanNAJ_akcije,
+                   'koordinate': koordinate
                    })
 
 
