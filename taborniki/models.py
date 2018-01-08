@@ -66,7 +66,7 @@ class Akcija(models.Model):
     porocilo = models.TextField(max_length=10000)
     zacetek = models.DateTimeField(null=True)
     konec = models.DateTimeField(null=True)
-    organizator = models.OneToOneField("Oseba", null=True)
+    organizator = models.ForeignKey("Oseba", null=True)
     udelezenci = models.ManyToManyField("Oseba",
                                         #on_delete=models.CASCADE,
                                         related_name='akcija_clan',

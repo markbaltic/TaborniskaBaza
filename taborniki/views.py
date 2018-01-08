@@ -91,6 +91,7 @@ def get_vod(request, vod_id):
 def get_rod(request, rod_id):
     rod = Rod.objects.get(id=rod_id)
     vodi = rod.rodov_vod.all()
+    clani_po_vodih = []
     return render(request, 'taborniki/rod.html', {'rod': rod, 'vodi': vodi})
 
 
@@ -154,7 +155,7 @@ def dodajAkcija(request):
             akcija = Akcija.objects.create(imeAkcija=data['imeAkcija'], zacetek=data['zacetek'], porocilo=data['porocilo'],
                                         organizator=data['organizator'], konec=data['konec'])
             akcija.save()
-            akcija.udelezenci.set(data['udelezenci'])
+            akcija.udelezenci=data['udelezenci']
             akcija.save()
 
             return redirect('/taborniki/akcija/%s' % akcija.id)
