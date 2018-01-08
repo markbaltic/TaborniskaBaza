@@ -47,6 +47,25 @@
                 chart.draw(data, google.charts.Bar.convertOptions(options));
             }
         </script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script>
+    google.charts.load('current', { 'packages': ['map'] });
+    google.charts.setOnLoadCallback(drawMap);
+
+    function drawMap() {
+      var data = google.visualization.arrayToDataTable(koordinate);
+
+    var options = {
+      showTooltip: true,
+      showInfoWindow: true
+    };
+
+    var map = new google.visualization.Map(document.getElementById('chart_div'));
+
+    map.draw(data, options);
+  };
+  </script>
         {% endblock %}
 
 
@@ -120,6 +139,7 @@
             <div class="mdl-cell" id="barchart_material" style="width: 900px; height: 500px;"></div>
         </div>
     </div>
+    <div id="chart_div"></div>
 
 
     </body>
