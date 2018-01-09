@@ -4,48 +4,52 @@
 {% block content %}
     <form action="" method="post">{% csrf_token %}
         <div class="mdl-grid">
+            <div class="mdl-cell--stretch ">
+                <div class="mdl-typography--headline mdl-cell mdl-cell--12-col">Dodaj akcijo</div>
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+                    <input class="mdl-textfield__input" type="text" id="imeAkcija" name='imeAkcija'/>
+                    <label class="mdl-textfield__label" for="imeAkcija">Ime Akcije</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+                    <input class="mdl-textfield__input" type="text" id="porocilo" name='porocilo'/>
+                    <label class="mdl-textfield__label" for="porocilo">Porocilo</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+                    <input class="mdl-textfield__input" type="text" id="zacetek" name='zacetek'/>
+                    <label class="mdl-textfield__label" for="zacetek">Začetek</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+                    <input class="mdl-textfield__input" type="text" id="konec" name='konec'/>
+                    <label class="mdl-textfield__label" for="konec">Konec</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+                    Organizator: {{ form.organizator }}
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+                    Udeleženci: (Drži Ctrl in označi) {{ form.udelezenci }}
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+                    <input class="mdl-textfield__input" type="text" id="x" name='x'/>
+                    <label class="mdl-textfield__label" for="x">X koordinata (x.xxx)</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+                    <input class="mdl-textfield__input" type="text" id="y" name='y'/>
+                    <label class="mdl-textfield__label" for="y">Y koordinata (y.yyy)</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+                    <input class="mdl-textfield__input" type="text" id="slika" name='slika'/>
+                    <label class="mdl-textfield__label" for="slika">Slika (URL)</label>
+                </div>
 
-            <div class="mdl-typography--headline mdl-cell mdl-cell--12-col">Dodaj akcijo</div>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-                <input class="mdl-textfield__input" type="text" id="imeAkcija" name='imeAkcija'/>
-                <label class="mdl-textfield__label" for="imeAkcija">Ime Akcije</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-                <input class="mdl-textfield__input" type="text" id="porocilo" name='porocilo'/>
-                <label class="mdl-textfield__label" for="porocilo">Porocilo</label>
-            </div>
 
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-                <input class="mdl-textfield__input" type="text" id="zacetek" name='zacetek'/>
-                <label class="mdl-textfield__label" for="zacetek">Začetek</label>
+                <button id="demo-show-snackbar" class="mdl-button mdl-js-button mdl-button--raised" type="submit">
+                    Dodaj
+                </button>
+                <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                </div>
             </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-                <input class="mdl-textfield__input" type="text" id="konec" name='konec'/>
-                <label class="mdl-textfield__label" for="konec">Konec</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-                {{ form.organizator }}
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-                {{ form.udelezenci }}
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-                {{ form.x }}
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-                {{ form.y }}
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-                {{ form.slika }}
-            </div>
-        </div>
-
-        <button id="demo-show-snackbar" class="mdl-button mdl-js-button mdl-button--raised" type="submit">
-            Dodaj
-        </button>
-        <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
-            <div class="mdl-snackbar__text"></div>
-            <button class="mdl-snackbar__action" type="button"></button>
         </div>
         <script>
             (function () {
