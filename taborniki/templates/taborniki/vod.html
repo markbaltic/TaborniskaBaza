@@ -92,7 +92,11 @@
 
                         <p>Vod: {{ vod.imeVod }} </p>
                         <p>Vodnik: {{ vod.vodnik }}</p>
-                        <p>Rod: {{ vod.rod.imeRod }}</p>
+
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{% url 'rod' vod.rod.id %}">
+                            <p>Rod: {{ vod.rod.imeRod }}</p>
+
+                        </a>
                         <p>Člani so: </p>
                         <ul class="demo-list-icon mdl-list">
                             {% for clan in clani %}
