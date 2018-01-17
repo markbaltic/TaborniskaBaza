@@ -1,15 +1,15 @@
 {% extends "taborniki/base.html" %}
 
 {% block content %}
-<p>Vodi so: </p>
+<p>Rodi so: </p>
                 <ul class="demo-list-icon mdl-list">
-                    {% for vod in vodi %}
+                    {% for rod in rodi %}
                         <li class="mdl-list__item">
                             <span class="mdl-list__item-primary-content">
-                                <a href="{% url 'vod' vod.id %}">
+                                <a href="{% url 'rod' rod.id %}">
                                     <i class="material-icons mdl-list__item-icon">hdr_weak</i>
                                 </a>
-                                {{ vod.imeVod }}
+                                {{ rod.imeRod }}
                             </span>
                         </li>
                     {% endfor %}
