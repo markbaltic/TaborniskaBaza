@@ -86,7 +86,12 @@ def clani(request):
 
 def get_name(request, clan_id):
     clan = Oseba.objects.get(id=clan_id)
-    return render(request, 'taborniki/search_results.html', {'clan': clan})
+    if (clan.vod.imeVod == 'Neuvrsceni'):
+        vod = Vod.objects.get(vodnik = clan_id)
+    else:
+        vod = None
+    print(vod)
+    return render(request, 'taborniki/search_results.html', {'clan': clan, 'vodnik_voda' : vod})
 
 
 def get_vod(request, vod_id):
@@ -207,7 +212,7 @@ def odstrani_clana_voda(request, clan_id):
     vod_id = clan.vod.id
     #neuvrsceni rod id
     rod_id = clan.vod.rod.id
-    vod = Vod.objects.get(rod = rod_id, imeVod = 'neuvrsceni')
+    vod = Vod.objects.get(rod = rod_id, imeVod = 'Neuvrsceni')
     clan.vod = vod
     clan.save()
     return redirect('/taborniki/vod/%s' % vod_id)
