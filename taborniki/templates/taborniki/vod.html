@@ -91,7 +91,7 @@
                     <div class="mdl-card__supporting-text">
 
                         <p>Vod: {{ vod.imeVod }} </p>
-                        <p>Vodnik: {{ vod.vodnik }}</p>
+                        <p>Vodnik: {% if vod.vodnik %}{{ vod.vodnik }} {%else %} /{% endif %}</p>
 
                         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{% url 'rod' vod.rod.id %}">
                             <p>Rod: {{ vod.rod.imeRod }}</p>

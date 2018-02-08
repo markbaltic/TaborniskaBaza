@@ -34,3 +34,7 @@ class DodajAkcija(forms.Form):
 
 class DodajClanaAkciji(forms.Form):
     izbrani_clan = forms.ModelChoiceField(queryset=Oseba.objects.all())
+
+
+
+
